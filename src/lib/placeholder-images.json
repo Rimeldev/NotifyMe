@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-visual",
+      "description": "A mockup of the NotifyAI application interface shown on a smartphone.",
+      "imageUrl": "https://picsum.photos/seed/notifyme-app/400/800",
+      "imageHint": "app mockup"
+    }
+  ]
+}
