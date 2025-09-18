@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Bell, CheckCircle } from 'lucide-react';
+import { Bell, CheckCircle, Star } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -50,7 +50,8 @@ export default function CtaSection() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
               Rejoignez 500+ Professionnels<br />
-              Qui Ne Ratent Plus Rien 🌟
+              Qui Ne Ratent Plus Rien
+              <Star className="inline w-8 h-8 ml-2 text-yellow-400" />
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Accès VIP gratuit + 60% de réduction à vie + Guide "Productivité WhatsApp"
@@ -88,9 +89,18 @@ export default function CtaSection() {
             </div>
 
             <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              <span>✅ Sans engagement</span>
-              <span>✅ Données sécurisées</span>
-              <span>✅ Désabonnement 1-clic</span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Sans engagement
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Données sécurisées
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                Désabonnement 1-clic
+              </span>
             </div>
           </div>
         </AnimateOnScroll>

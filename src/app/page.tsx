@@ -4,7 +4,7 @@ import UseCasesSection from '@/components/landing/use-cases-section';
 import ProblemSection from '@/components/landing/problem-section';
 import SolutionSection from '@/components/landing/solution-section';
 import DemoSection from '@/components/landing/demo-section';
-import SocialProofSection from '@/components/landing/social-proof-section';
+import TestimonialsSection from '@/components/landing/testimonials-section';
 import CtaSection from '@/components/landing/cta-section';
 import Footer from '@/components/landing/footer';
 
@@ -18,7 +18,7 @@ export default function Home() {
         <ProblemSection />
         <SolutionSection />
         <DemoSection />
-        <SocialProofSection />
+        <TestimonialsSection />
         <CtaSection />
       </main>
       <Footer />

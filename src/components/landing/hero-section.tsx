@@ -4,7 +4,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { CheckCircle, Rocket } from 'lucide-react';
+import { CheckCircle, Rocket, Sparkles, Brain } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -73,8 +73,9 @@ export default function HeroSection() {
       
       <div className="container relative z-10">
         <AnimateOnScroll>
-          <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-secondary text-secondary-foreground">
-            ✨ 547 professionnels déjà en liste d'attente
+          <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-secondary text-secondary-foreground flex items-center gap-2">
+            <Sparkles className="w-4 h-4" />
+            547 professionnels déjà en liste d'attente
           </div>
         </AnimateOnScroll>
         
@@ -155,7 +156,12 @@ export default function HeroSection() {
                             <SelectItem value="50-100">50-100 messages</SelectItem>
                             <SelectItem value="100-200">100-200 messages</SelectItem>
                             <SelectItem value="200-500">200-500 messages</SelectItem>
-                            <SelectItem value="500+">Plus de 500 messages 🤯</SelectItem>
+                            <SelectItem value="500+">
+                              <div className="flex items-center gap-2">
+                                <Brain className="w-4 h-4" />
+                                Plus de 500 messages
+                              </div>
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />

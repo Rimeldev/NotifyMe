@@ -47,7 +47,7 @@ const useCases = [
 
 export default function UseCasesSection() {
   return (
-    <section className="bg-background">
+    <section id="use-cases" className="bg-background">
       <div className="container">
         <AnimateOnScroll>
           <h2 className="text-center font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">

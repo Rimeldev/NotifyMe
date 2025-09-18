@@ -1,4 +1,4 @@
-import { Smartphone, Briefcase, Heart, MessageSquare, Flame } from 'lucide-react';
+import { Smartphone, Briefcase, Heart, MessageSquare, Flame, Brain } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { AnimateOnScroll } from '../ui/animate-on-scroll';
 
@@ -47,12 +47,13 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section className="bg-secondary">
+    <section id="problem" className="bg-secondary">
       <div className="container">
         <AnimateOnScroll>
           <h2 className="text-center font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
             Votre cerveau est votre unique<br/>
-            <span className="text-primary">système de notification</span> ? 🤯
+            <span className="text-primary">système de notification</span> ?
+            <Brain className="inline w-8 h-8 ml-2 text-primary" />
           </h2>
            <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-muted-foreground">
             C'est la recette parfaite pour le surmenage, le stress, et les opportunités manquées, tant professionnelles que personnelles.

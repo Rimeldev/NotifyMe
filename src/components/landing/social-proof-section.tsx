@@ -10,6 +10,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { AnimatedCounter } from "../ui/animated-counter";
 import { AnimateOnScroll } from "../ui/animate-on-scroll";
+import { TrendingUp } from "lucide-react";
 
 const testimonials = [
   {
@@ -45,8 +46,9 @@ export default function SocialProofSection() {
               <div className="mt-2 text-lg text-white">
                 Professionnels en Liste d'Attente
               </div>
-              <div className="mt-1 text-green-400 font-semibold">
-                ↗️ +23 cette semaine
+              <div className="mt-1 text-green-400 font-semibold flex items-center justify-center gap-1">
+                <TrendingUp className="w-4 h-4" />
+                +23 cette semaine
               </div>
             </div>
           </div>

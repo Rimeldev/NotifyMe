@@ -1,4 +1,4 @@
-import { Bot, FileText, Siren, Settings2 } from 'lucide-react';
+import { Bot, FileText, Siren, Settings2, Rocket } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { AnimateOnScroll } from '../ui/animate-on-scroll';
 import { Badge } from '@/components/ui/badge';
@@ -53,11 +53,12 @@ const features = [
 
 export default function SolutionSection() {
   return (
-    <section>
+    <section id="solution">
       <div className="container">
         <AnimateOnScroll>
           <h2 className="text-center font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
-            Reprenez le contrôle avec 4 Super-Pouvoirs 🚀
+            Reprenez le contrôle avec 4 Super-Pouvoirs
+            <Rocket className="inline w-8 h-8 ml-2 text-primary" />
           </h2>
         </AnimateOnScroll>
         
