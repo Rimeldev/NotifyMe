@@ -1,96 +1,98 @@
 "use client";
 
-import {Carousel, TestimonialCard} from "@/components/ui/retro-testimonial";
-import {iTestimonial} from "@/components/ui/retro-testimonial";
 import { AnimateOnScroll } from '../ui/animate-on-scroll';
+import { Star, Quote } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-type TestimonialDetails = {
-	[key: string]: iTestimonial & {id: string};
-};
+interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+}
 
-const testimonialData = {
-	ids: [
-		"notifyai-001",
-		"notifyai-002", 
-		"notifyai-003",
-		"notifyai-004",
-		"notifyai-005",
-		"notifyai-006",
-	],
-	details: {
-		"notifyai-001": {
-			id: "notifyai-001",
-			description:
-				"NotifyAI a révolutionné ma gestion des messages clients. Plus de deals ratés, plus de stress constant. Je peux enfin me concentrer sur l'essentiel.",
-			profileImage:
-				"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2787&auto=format&fit=crop",
-			name: "Marie Dubois",
-			designation: "CEO, Startup Tech",
-		},
-		"notifyai-002": {
-			id: "notifyai-002",
-			description:
-				"Entre 15 groupes projets et 50+ conversations clients, j'étais submergé. NotifyAI filtre intelligemment et me fait gagner 3h par jour.",
-			profileImage:
-				"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2787&auto=format&fit=crop",
-			name: "Thomas Martin",
-			designation: "Chef de Projet Digital",
-		},
-		"notifyai-003": {
-			id: "notifyai-003",
-			description:
-				"Avec 3 enfants et un travail prenant, je ratais tout. NotifyAI me permet de ne plus manquer les urgences école tout en gérant mes clients.",
-			profileImage:
-				"https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2787&auto=format&fit=crop",
-			name: "Sophie Leroy",
-			designation: "Consultante & Maman",
-		},
-		"notifyai-004": {
-			id: "notifyai-004",
-			description:
-				"L'IA comprend parfaitement mes priorités. Les résumés contextuels sont d'une précision bluffante. Un gain de temps et d'efficacité énorme.",
-			profileImage:
-				"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop",
-			name: "Alexandre Petit",
-			designation: "Freelance Marketing",
-		},
-		"notifyai-005": {
-			id: "notifyai-005",
-			description:
-				"Gérer une équipe distribuée sur WhatsApp, Telegram et Slack était un cauchemar. NotifyAI unifie tout intelligemment.",
-			profileImage:
-				"https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2787&auto=format&fit=crop",
-			name: "Camille Rousseau",
-			designation: "Manager Remote",
-		},
-		"notifyai-006": {
-			id: "notifyai-006",
-			description:
-				"Les alertes SMS pour les urgences vraiment critiques ont sauvé plusieurs deals importants. La précision de l'IA est remarquable.",
-			profileImage:
-				"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2787&auto=format&fit=crop",
-			name: "Julien Moreau",
-			designation: "Directeur Commercial",
-		},
-	},
-};
+const testimonials: Testimonial[] = [
+  {
+    id: "1",
+    name: "Marie Dubois",
+    role: "CEO, Startup Tech",
+    content: "NotifyAI a révolutionné ma gestion des messages clients. Plus de deals ratés, plus de stress constant.",
+    rating: 5
+  },
+  {
+    id: "2",
+    name: "Thomas Martin",
+    role: "Chef de Projet Digital",
+    content: "Entre 15 groupes projets et 50+ conversations clients, j'étais submergé. NotifyAI me fait gagner 3h par jour.",
+    rating: 5
+  },
+  {
+    id: "3",
+    name: "Sophie Leroy",
+    role: "Consultante & Maman",
+    content: "Avec 3 enfants et un travail prenant, je ratais tout. NotifyAI me permet de ne plus manquer les urgences.",
+    rating: 5
+  },
+  {
+    id: "4",
+    name: "Alexandre Petit",
+    role: "Freelance Marketing",
+    content: "L'IA comprend parfaitement mes priorités. Les résumés contextuels sont d'une précision bluffante.",
+    rating: 5
+  },
+  {
+    id: "5",
+    name: "Camille Rousseau",
+    role: "Manager Remote",
+    content: "Gérer une équipe distribuée sur WhatsApp, Telegram et Slack était un cauchemar. NotifyAI unifie tout.",
+    rating: 5
+  },
+  {
+    id: "6",
+    name: "Julien Moreau",
+    role: "Directeur Commercial",
+    content: "Les alertes SMS pour les urgences vraiment critiques ont sauvé plusieurs deals importants.",
+    rating: 5
+  }
+];
 
-// Testimonial cards with French data
-const cards = testimonialData.ids.map((cardId: string, index: number) => {
-	const details = testimonialData.details as TestimonialDetails;
-	return (
-		<TestimonialCard
-			key={cardId}
-			testimonial={details[cardId]}
-			index={index}
-			backgroundImage="https://images.unsplash.com/photo-1528458965990-428de4b1cb0d?q=80&w=3129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-		/>
-	);
-});
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  return (
+    <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-xl p-6 min-w-[300px] max-w-[350px] flex-shrink-0">
+      <div className="flex items-center gap-1 mb-4">
+        {[...Array(testimonial.rating)].map((_, i) => (
+          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+        ))}
+      </div>
+
+      <Quote className="w-6 h-6 text-primary mb-3" />
+
+      <p className="text-foreground mb-4 leading-relaxed">
+        "{testimonial.content}"
+      </p>
+
+      <div className="border-t border-white/10 pt-4">
+        <p className="font-semibold text-foreground">{testimonial.name}</p>
+        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function TestimonialsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000); // Défilement toutes les 4 secondes
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="testimonials" className="bg-secondary">
+    <section id="testimonials" className="bg-secondary py-20">
       <div className="container">
         <AnimateOnScroll>
           <h2 className="text-center font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
@@ -102,7 +104,32 @@ export default function TestimonialsSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll delay={200}>
-          <Carousel items={cards} />
+          <div className="mt-12 relative overflow-hidden">
+            <div
+              className="flex gap-6 transition-transform duration-1000 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * (350 + 24)}px)`,
+                width: `${testimonials.length * (350 + 24)}px`
+              }}
+            >
+              {testimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              ))}
+            </div>
+
+            {/* Indicateurs */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentIndex ? 'bg-primary' : 'bg-white/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </AnimateOnScroll>
       </div>
     </section>

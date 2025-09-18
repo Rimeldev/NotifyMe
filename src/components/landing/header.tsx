@@ -6,9 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navigationItems = [
-  { href: '#hero', label: 'Accueil' },
-  { href: '#use-cases', label: 'Cas d\'usage' },
-  { href: '#problem', label: 'Problème' },
   { href: '#solution', label: 'Solution' },
   { href: '#demo', label: 'Démo' },
   { href: '#testimonials', label: 'Témoignages' },

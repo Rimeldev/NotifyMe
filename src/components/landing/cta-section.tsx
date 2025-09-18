@@ -48,13 +48,20 @@ export default function CtaSection() {
       <div className="container">
         <AnimateOnScroll>
           <div className="max-w-3xl mx-auto text-center">
+            <div className="mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm font-medium">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                Dernières heures - Plus que 23 places VIP
+              </div>
+            </div>
+
             <h2 className="font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
-              Rejoignez 500+ Professionnels<br />
-              Qui Ne Ratent Plus Rien
+              Dernière Chance<br />
+              Accès VIP Exclusif
               <Star className="inline w-8 h-8 ml-2 text-yellow-400" />
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Accès VIP gratuit + 60% de réduction à vie + Guide "Productivité WhatsApp"
+              🔥 Offre de lancement - 60% de réduction + Guide "Productivité WhatsApp" GRATUIT
             </p>
 
             <div className="mt-10 max-w-xl mx-auto">
@@ -79,9 +86,9 @@ export default function CtaSection() {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="cta-primary w-full sm:w-auto mt-4 sm:mt-0 h-14" disabled={form.formState.isSubmitting}>
-                      <Bell className="mr-2"/>
-                      Je Veux Mon Accès VIP
+                    <Button type="submit" className="cta-primary w-full sm:w-auto mt-4 sm:mt-0 h-16 text-xl font-bold px-8" disabled={form.formState.isSubmitting}>
+                      <Bell className="mr-3"/>
+                      RÉSERVER MON ACCÈS VIP
                     </Button>
                   </form>
                 </Form>
