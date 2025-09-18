@@ -116,7 +116,7 @@ export default function HeroSection() {
                 
                 <Button type="submit" className="cta-primary w-full mt-6 h-16 text-xl font-bold" disabled={form.formState.isSubmitting}>
                   <Rocket className="mr-3 flex-shrink-0" />
-                  Je veux mon accès VIP maintenant !
+                  Je veux mon accès VIP
                 </Button>
                 
                 <p className="text-xs text-muted-foreground mt-3">
