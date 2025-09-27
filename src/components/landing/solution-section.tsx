@@ -1,7 +1,8 @@
-import { Bot, FileText, Siren, Settings2, Rocket } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
-import { AnimateOnScroll } from '../ui/animate-on-scroll';
-import { Badge } from '@/components/ui/badge';
+"use client";
+
+import { Badge } from "@/components/ui/badge";
+import { Bot, FileText, Rocket, Settings2, Siren, Shield } from "lucide-react";
+import { AnimateOnScroll } from "../ui/animate-on-scroll";
 
 const features = [
   {
@@ -15,6 +16,9 @@ const features = [
       "IA qui apprend vos priorités contextuelles",
     ],
     platforms: ["WhatsApp", "Telegram", "Messenger", "+Discord"],
+    gradient: "from-primary/5 to-cyan/5",
+    iconGradient: "from-primary to-cyan",
+    borderGlow: "hover:shadow-glow-primary",
   },
   {
     icon: FileText,
@@ -26,6 +30,9 @@ const features = [
       "Résumé CONVERSATIONS : threads privés importants",
       "/resume [contact] ou /resume [groupe]",
     ],
+    gradient: "from-purple-500/5 to-primary/5",
+    iconGradient: "from-purple-500 to-primary",
+    borderGlow: "hover:shadow-glow-purple",
   },
   {
     icon: Siren,
@@ -37,6 +44,9 @@ const features = [
       'BUSINESS : "contrat", "deal", "projet"',
       'FAMILLE : "école", "médecin", "urgence"',
     ],
+    gradient: "from-warning/5 to-destructive/5",
+    iconGradient: "from-warning to-destructive",
+    borderGlow: "hover:shadow-glow-cyan",
   },
   {
     icon: Settings2,
@@ -48,49 +58,115 @@ const features = [
       "Gestion contacts VIP par contexte",
       "Analytics : qui écrit, quand, combien",
     ],
+    gradient: "from-cyan/5 to-success/5",
+    iconGradient: "from-cyan to-success",
+    borderGlow: "hover:shadow-glow-primary",
   },
 ];
 
 export default function SolutionSection() {
   return (
-    <section id="solution">
-      <div className="container">
+    <section id="solution" className="relative py-24 bg-background">
+      <div className="container max-w-7xl mx-auto px-4">
+        {/* Header professionnel */}
         <AnimateOnScroll>
-          <h2 className="text-center font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
-            Reprenez le contrôle avec 4 Super-Pouvoirs
-            <Rocket className="inline w-8 h-8 ml-2 text-primary" />
-          </h2>
+          <div className="text-center mb-20">
+            {/* Badge d'introduction */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
+              <Shield className="w-4 h-4 text-primary" />
+              <span className="text-primary font-medium text-sm">SOLUTION COMPLÈTE</span>
+            </div>
+            
+            <h2 className="font-headline font-bold text-foreground text-[clamp(2rem,5vw,3.5rem)] leading-tight mb-6">
+              Reprenez le contrôle avec<br />
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                4 Super-Pouvoirs
+              </span>
+              <Rocket className="inline w-10 h-10 ml-3 text-primary animate-bounce" />
+            </h2>
+            
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Découvrez comment <strong className="text-primary">NotifyMe</strong> vous simplifie la vie en 
+              <span className="text-foreground font-medium"> filtrant, priorisant et résumant</span> vos conversations.
+            </p>
+          </div>
         </AnimateOnScroll>
-        
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+        {/* Grille des features en cards 2x2 */}
+        <div className="grid gap-8 md:grid-cols-2">
           {features.map((feature, index) => (
-            <AnimateOnScroll key={feature.title} delay={index * 100}>
-              <Card className="bg-card/80 border-white/10 h-full flex flex-col">
-                <CardHeader>
-                  <div className="p-3 rounded-full bg-primary/10 mb-4 w-fit">
-                    <feature.icon className="w-6 h-6 text-primary" />
+            <AnimateOnScroll key={feature.title} delay={index * 150}>
+              <div className={`relative bg-gradient-to-br ${feature.gradient} backdrop-blur-md border border-border rounded-2xl shadow-xl ${feature.borderGlow} hover:scale-[1.02] transition-all duration-500 h-full flex flex-col group overflow-hidden`}>
+                
+                {/* Effet de brillance au survol */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                
+                {/* Badge numéro */}
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-primary to-cyan rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg z-10">
+                  {index + 1}
+                </div>
+
+                {/* Header de la card */}
+                <div className="p-8 pb-4">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.iconGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <feature.icon className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground pt-2">{feature.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow flex flex-col justify-between">
-                  <ul className="space-y-2 text-secondary-foreground text-sm list-disc list-inside">
-                    {feature.points.map((point) => (
-                      <li key={point}>{point}</li>
+                  
+                  <h3 className="text-2xl font-bold text-foreground mb-3 leading-tight">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Contenu de la card */}
+                <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+                  <ul className="space-y-3 mb-6">
+                    {feature.points.map((point, pointIndex) => (
+                      <li key={point} className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                        <span className="text-muted-foreground leading-relaxed">
+                          {point}
+                        </span>
+                      </li>
                     ))}
                   </ul>
+
+                  {/* Plateformes supportées */}
                   {feature.platforms && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {feature.platforms.map(platform => (
-                        <Badge key={platform} variant="secondary" className="bg-secondary/80">{platform}</Badge>
+                    <div className="flex flex-wrap gap-2">
+                      {feature.platforms.map((platform) => (
+                        <Badge
+                          key={platform}
+                          variant="secondary"
+                          className="bg-card/50 border border-border/50 text-card-foreground hover:bg-primary/10 hover:border-primary/20 hover:text-primary transition-all duration-300"
+                        >
+                          {platform}
+                        </Badge>
                       ))}
                     </div>
                   )}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </AnimateOnScroll>
           ))}
         </div>
+
+        {/* Call to action final pour landing page */}
+        <AnimateOnScroll delay={800}>
+          <div className="mt-20 text-center">
+            <div className="inline-block p-8 bg-gradient-to-br from-primary/10 to-cyan/10 border border-primary/20 rounded-3xl shadow-xl">
+              <h3 className="text-2xl font-bold text-foreground mb-3">
+                Bientôt disponible 🚀
+              </h3>
+              <p className="text-lg text-muted-foreground">
+                Ces 4 super-pouvoirs travaillent ensemble pour vous faire gagner du temps et réduire votre stress.
+              </p>
+            </div>
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

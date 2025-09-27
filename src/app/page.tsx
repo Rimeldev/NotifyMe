@@ -1,3 +1,5 @@
+'use client';
+
 import Header from '@/components/landing/header';
 import HeroSection from '@/components/landing/hero-section';
 import UseCasesSection from '@/components/landing/use-cases-section';
@@ -7,6 +9,7 @@ import DemoSection from '@/components/landing/demo-section';
 import TestimonialsSection from '@/components/landing/testimonials-section';
 import CtaSection from '@/components/landing/cta-section';
 import Footer from '@/components/landing/footer';
+
 
 export default function Home() {
   return (
@@ -20,6 +23,7 @@ export default function Home() {
         <DemoSection />
         <TestimonialsSection />
         <CtaSection />
+     
       </main>
       <Footer />
     </div>

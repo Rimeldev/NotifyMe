@@ -1,114 +1,118 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Bell, CheckCircle, Star } from 'lucide-react';
-
+import { ArrowRight, CheckCircle, Users, Zap, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
 import { AnimateOnScroll } from '../ui/animate-on-scroll';
-import { useState } from 'react';
-
-const formSchema = z.object({
-  email: z.string().email({ message: 'Email invalide.' }),
-});
+import { useRouter } from 'next/navigation';
 
 export default function CtaSection() {
-  const { toast } = useToast();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+ 
+  const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    setIsSubmitted(true);
-    toast({
-      title: "Parfait !",
-      description: "Vous êtes bien inscrit. À très vite !",
-    });
-  }
+  const handleEarlyAccess = () => {
+   
+    router.push('/early-access'); // Remplacez le console.log
+  };
+  const stats = [
+    { icon: Users, value: '500+', label: 'Professionnels intéressés' },
+    { icon: Zap, value: '99.9%', label: 'Précision IA' },
+    { icon: Clock, value: '24/7', label: 'Surveillance active' },
+  ];
 
   return (
-    <section id="cta" className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(31,77,128,0.2),rgba(255,255,255,0))]"></div>
-      <div className="container">
+    <section id="cta" className="relative overflow-hidden py-20 bg-slate-900">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-cyan/10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(59,130,246,0.15),transparent)]"></div>
+      
+      <div className="container relative z-10">
         <AnimateOnScroll>
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm font-medium">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                Dernières heures - Plus que 23 places VIP
+          <div className="max-w-4xl mx-auto text-center">
+            
+            {/* Badge de statut */}
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 border border-primary/30 rounded-full text-primary text-sm font-medium shadow-glow-primary">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                Bientôt disponible - Liste d'attente ouverte
               </div>
             </div>
 
-            <h2 className="font-headline font-bold text-white text-[clamp(1.8rem,5vw,3rem)] leading-tight">
-              Dernière Chance<br />
-              Accès VIP Exclusif
-              <Star className="inline w-8 h-8 ml-2 text-yellow-400" />
+            {/* Titre principal */}
+            <h2 className="font-headline font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+              Rejoignez les premiers{' '}
+              <span className="bg-gradient-to-r from-primary via-cyan to-purple bg-clip-text text-transparent">
+                utilisateurs
+              </span>
+              <br />
+              de NotifyMe
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              🔥 Offre de lancement - 60% de réduction + Guide "Productivité WhatsApp" GRATUIT
+            
+            {/* Description */}
+            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+              Soyez averti dès le lancement et bénéficiez d'un accès prioritaire 
+              à la solution qui révolutionnera vos communications professionnelles.
             </p>
 
-            <div className="mt-10 max-w-xl mx-auto">
-              {isSubmitted ? (
-                 <div className="glass-card p-8 text-center">
-                    <CheckCircle className="mx-auto h-16 w-16 text-green-500 mb-4" />
-                    <h3 className="text-2xl font-bold text-white mb-2">Inscription Réussie !</h3>
-                    <p className="text-muted-foreground">Bienvenue sur la liste d'attente. Vous avez fait le bon choix.</p>
-                </div>
-              ) : (
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="glass-card p-4 sm:flex sm:items-center sm:gap-4">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem className="flex-1">
-                          <FormControl>
-                            <Input placeholder="Votre email professionnel" {...field} className="h-14 text-base bg-background/50 border-white/20" />
-                          </FormControl>
-                          <FormMessage className="text-left pl-2"/>
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" className="cta-primary w-full sm:w-auto mt-4 sm:mt-0 h-16 text-xl font-bold px-8" disabled={form.formState.isSubmitting}>
-                      <Bell className="mr-3"/>
-                      RÉSERVER MON ACCÈS VIP
-                    </Button>
-                  </form>
-                </Form>
-              )}
+            {/* Stats rapides */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {stats.map((stat, index) => (
+                <AnimateOnScroll key={stat.label} delay={100 + index * 100}>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                      <div className="p-2 bg-primary/20 rounded-lg">
+                        <stat.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="text-3xl font-bold text-white">
+                        {stat.value}
+                      </div>
+                    </div>
+                    <p className="text-sm text-slate-400">{stat.label}</p>
+                  </div>
+                </AnimateOnScroll>
+              ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                Sans engagement
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                Données sécurisées
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
-                Désabonnement 1-clic
-              </span>
-            </div>
+            {/* CTA Principal */}
+            <AnimateOnScroll delay={400}>
+              <div className="space-y-6">
+                <Button 
+                  onClick={handleEarlyAccess}
+                  className="h-16 px-12 text-xl font-bold bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 transform hover:scale-105"
+                >
+                  Rejoindre la liste d'attente
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </Button>
+                
+                <p className="text-slate-400">
+                  Accès gratuit - Aucun engagement requis
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            {/* Garanties */}
+            <AnimateOnScroll delay={500}>
+              <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <CheckCircle className="w-4 h-4 text-success" />
+                  <span>Accès prioritaire</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <CheckCircle className="w-4 h-4 text-success" />
+                  <span>Notifications exclusives</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <CheckCircle className="w-4 h-4 text-success" />
+                  <span>Support premium</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-300">
+                  <CheckCircle className="w-4 h-4 text-success" />
+                  <span>Désabonnement simple</span>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+           
+
           </div>
         </AnimateOnScroll>
       </div>
