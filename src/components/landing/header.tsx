@@ -1,98 +1,86 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Bell, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-
+import { useState, useEffect } from "react";
+import { Bell, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const navigationItems = [
-  { href: '#hero', label: 'Accueil' },
-  { href: '#use-cases', label: 'Cas d\'usage' },
-  { href: '#solution', label: 'Fonctionnalités' },
-  { href: '#cta', label: 'Contact' },
+  { href: "#hero", label: "Accueil" },
+  { href: "#use-cases", label: "Solutions" },
+  { href: "#cta", label: "Contact" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-   const router = useRouter();
+  const router = useRouter();
 
-  // Gestion du scroll pour l'effet glassmorphism
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
- const handleCtaClick = () => {
+  const handleCtaClick = () => {
     setIsOpen(false);
-    router.push('/early-access'); // Remplacez le console.log
+    router.push("/early-access");
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-slate-900/90 backdrop-blur-md border-b border-white/10 shadow-lg' 
-          : 'bg-transparent'
+        isScrolled
+          ? "bg-black/90 backdrop-blur-md shadow-xl border-b border-gray-800"
+          : "bg-black/20 backdrop-blur-sm"
       }`}
     >
-      <div className="container">
-        <nav className="flex items-center justify-between py-4">
-          
+      <div className="container mx-auto px-4">
+        <nav className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="relative">
-              <Image
-                src="/notifylogo.png"
-                alt="NotifyMe Logo"
-                width={48}
-                height={48}
-                className="h-12 w-12 transition-transform duration-300 group-hover:scale-110"
-                priority
-              />
-              {/* Glow effect autour du logo */}
-              <div className="absolute inset-0 rounded-full bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <span className="text-xl font-bold text-white group-hover:text-primary transition-colors duration-300">
-              NotifyMe
-            </span>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/notifylogo.png"
+              alt="NotifyMe"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+              priority
+            />
+            <span className="text-xl font-bold text-white">NotifyMe</span>
           </div>
 
           {/* Navigation Desktop */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8">
             {navigationItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="relative text-white/80 hover:text-white transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-white/5 group"
+                className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
               >
                 {item.label}
-                {/* Underline effect */}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-cyan transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
 
           {/* CTA Desktop */}
-          <Button 
+          <Button
             onClick={handleCtaClick}
-            className="hidden lg:flex h-11 px-6 bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 font-semibold"
+            className="hidden md:flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
           >
-            Liste d'attente
+            Rejoindre
           </Button>
 
           {/* Menu Mobile */}
@@ -101,55 +89,43 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="lg:hidden text-white hover:text-primary hover:bg-white/10 transition-colors duration-300"
+                className="md:hidden text-white hover:bg-white/10"
               >
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Ouvrir le menu</span>
               </Button>
             </SheetTrigger>
-            
-            <SheetContent 
-              side="right" 
-              className="w-[320px] bg-slate-900/95 backdrop-blur-md border-l border-white/10"
+
+            <SheetContent
+              side="right"
+              className="w-[280px] bg-gray-900 border-gray-800"
             >
-              <div className="flex flex-col h-full">
-                
+              <div className="flex flex-col h-full pt-8">
                 {/* Logo Mobile */}
-                <div className="flex items-center gap-3 mb-8 pt-2">
-                  <div className="p-2 bg-primary/20 rounded-lg">
-                    <Bell className="w-5 h-5 text-primary" />
-                  </div>
+                <div className="flex items-center gap-3 mb-8">
+                  <Bell className="w-6 h-6 text-blue-500" />
                   <span className="text-xl font-bold text-white">NotifyMe</span>
                 </div>
 
                 {/* Navigation Mobile */}
-                <nav className="flex flex-col gap-2 flex-1">
+                <nav className="flex flex-col gap-4 flex-1">
                   {navigationItems.map((item) => (
                     <button
                       key={item.href}
                       onClick={() => handleNavClick(item.href)}
-                      className="text-left text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 font-medium py-4 px-4 rounded-lg border border-transparent hover:border-white/10"
+                      className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2"
                     >
                       {item.label}
                     </button>
                   ))}
                 </nav>
 
-                {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-6"></div>
-
                 {/* CTA Mobile */}
                 <Button
                   onClick={handleCtaClick}
-                  className="w-full h-12 bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 font-semibold mb-4"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg mb-4"
                 >
                   Rejoindre la liste
                 </Button>
-
-                {/* Info complémentaire */}
-                <div className="text-center text-sm text-white/60 pb-4">
-                  Accès prioritaire • Sans engagement
-                </div>
               </div>
             </SheetContent>
           </Sheet>
