@@ -1,22 +1,20 @@
-'use client';
+"use client";
 
-import { ArrowRight, CheckCircle, Users, Zap, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { AnimateOnScroll } from '../ui/animate-on-scroll';
-import { useRouter } from 'next/navigation';
+import { ArrowRight, CheckCircle, Users, Zap, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AnimateOnScroll } from "../ui/animate-on-scroll";
+import { useRouter } from "next/navigation";
 
 export default function CtaSection() {
- 
   const router = useRouter();
 
   const handleEarlyAccess = () => {
-   
-    router.push('/early-access'); // Remplacez le console.log
+    router.push("/early-access"); // Remplacez le console.log
   };
   const stats = [
-    { icon: Users, value: '500+', label: 'Professionnels intéressés' },
-    { icon: Zap, value: '99.9%', label: 'Précision IA' },
-    { icon: Clock, value: '24/7', label: 'Surveillance active' },
+    { icon: Users, value: "356", label: "En liste d'attente" },
+    { icon: Zap, value: "4+", label: "Plateformes supportées" },
+    { icon: Clock, value: "24h", label: "Temps de réponse" },
   ];
 
   return (
@@ -24,11 +22,10 @@ export default function CtaSection() {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-cyan/10"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(59,130,246,0.15),transparent)]"></div>
-      
+
       <div className="container relative z-10">
         <AnimateOnScroll>
           <div className="max-w-4xl mx-auto text-center">
-            
             {/* Badge de statut */}
             <div className="mb-8">
               <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 border border-primary/30 rounded-full text-primary text-sm font-medium shadow-glow-primary">
@@ -39,18 +36,19 @@ export default function CtaSection() {
 
             {/* Titre principal */}
             <h2 className="font-headline font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-              Rejoignez les premiers{' '}
+              Rejoignez les premiers{" "}
               <span className="bg-gradient-to-r from-primary via-cyan to-purple bg-clip-text text-transparent">
                 utilisateurs
               </span>
               <br />
               de NotifyMe
             </h2>
-            
+
             {/* Description */}
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
-              Soyez averti dès le lancement et bénéficiez d'un accès prioritaire 
-              à la solution qui révolutionnera vos communications professionnelles.
+              Soyez averti dès le lancement et bénéficiez d'un accès prioritaire
+              à la solution qui révolutionnera vos communications
+              professionnelles.
             </p>
 
             {/* Stats rapides */}
@@ -75,14 +73,14 @@ export default function CtaSection() {
             {/* CTA Principal */}
             <AnimateOnScroll delay={400}>
               <div className="space-y-6">
-                <Button 
+                <Button
                   onClick={handleEarlyAccess}
                   className="h-16 px-12 text-xl font-bold bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 transform hover:scale-105"
                 >
                   Rejoindre la liste d'attente
                   <ArrowRight className="ml-3 w-6 h-6" />
                 </Button>
-                
+
                 <p className="text-slate-400">
                   Accès gratuit - Aucun engagement requis
                 </p>
@@ -110,9 +108,6 @@ export default function CtaSection() {
                 </div>
               </div>
             </AnimateOnScroll>
-
-           
-
           </div>
         </AnimateOnScroll>
       </div>

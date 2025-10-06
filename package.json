@@ -1,9 +1,25 @@
 {
-  "name": "nextn",
-  "version": "0.1.0",
+  "name": "notifyme",
+  "version": "1.0.0",
+  "description": "Communication intelligente multi-plateformes avec IA - Surveillance 360°, résumés contextuels et alertes SMS personnalisées",
+  "author": "NotifyMe Team",
+  "keywords": [
+    "whatsapp",
+    "telegram",
+    "ai",
+    "notifications",
+    "messaging",
+    "automation",
+    "communication"
+  ],
+  "homepage": "https://github.com/Billions229/NotifyMe2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Billions229/NotifyMe2.git"
+  },
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 9002",
+    "dev": "next dev --turbopack -p 3000",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",

@@ -1,311 +1,482 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { AnimateOnScroll } from '../ui/animate-on-scroll';
-import { Button } from '../ui/button';
-import { cn } from '@/lib/utils';
-import { 
-  Briefcase, 
-  Users, 
-  Siren, 
-  FileText, 
-  Flame, 
-  Calendar, 
-  DollarSign, 
-  AlertTriangle, 
-  CheckCircle, 
+import { useState } from "react";
+import { AnimateOnScroll } from "../ui/animate-on-scroll";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import {
+  Briefcase,
+  Users,
+  Siren,
+  FileText,
+  Flame,
+  Calendar,
+  DollarSign,
+  AlertTriangle,
+  CheckCircle,
   Gift,
   Smartphone,
   Clock,
   TrendingUp,
-  Zap
-} from 'lucide-react';
+  Zap,
+  MessageCircle,
+  Bell,
+  Phone,
+  Mail,
+} from "lucide-react";
 
 export default function DemoSection() {
-  const [activeTab, setActiveTab] = useState('business');
+  const [activeTab, setActiveTab] = useState("business");
 
   const scenarios = {
     business: {
-      title: "Entrepreneur avec 30+ conversations clients",
-      subtitle: "Transformez le chaos en opportunités",
+      title: "Sarah, Consultante Marketing",
+      subtitle: "40+ conversations clients par jour",
+      avatar: "👩‍💼",
+      context: "Entre réunions, Sarah rate souvent des messages cruciaux...",
       messages: [
         {
-          sender: "Client Premium - Marie",
-          content: "Le budget est validé, on lance quand ?",
+          sender: "🔥 CLIENT VIP - LVMH",
+          content:
+            "Sarah, le CEO veut voir la présentation DEMAIN 9h. C'est validé pour 2M€ si on livre !",
           type: "urgent",
-          sms: "Client Premium urgent - Deal 50k validé",
+          platform: "WhatsApp",
+          time: "14:23",
+          sms: "🚨 LVMH CEO - Présentation 2M€ DEMAIN 9h",
           icon: DollarSign,
-          time: "11:30"
+          bgColor: "from-red-500 to-pink-500",
+          textColor: "text-red-50",
         },
         {
-          sender: "Fournisseur - Paul", 
-          content: "Les échantillons sont prêts, rendez-vous demain ?",
-          type: "normal",
-          action: "Ajouté au résumé 19h",
-          icon: Calendar,
-          time: "14:15"
-        },
-        {
-          sender: "Prospect - Julie",
-          content: "Intéressée par vos services, on peut programmer un call ?",
-          type: "opportunity",
-          action: "Marqué comme prospect chaud",
+          sender: "📊 Équipe Design (47 messages)",
+          content:
+            "Débat sur les mockups, deadline approche, besoin validation...",
+          type: "group",
+          platform: "Telegram",
+          time: "15:45",
+          action:
+            "IA résume: 'Mockups v3 prêts, attendent votre validation urgente'",
           icon: TrendingUp,
-          time: "16:20"
-        }
+          bgColor: "from-orange-500 to-yellow-500",
+          textColor: "text-orange-50",
+        },
+        {
+          sender: "💰 Prospect Tesla France",
+          content:
+            "Bonjour, suite à votre proposition, nous sommes intéressés pour un contrat 500k€",
+          type: "opportunity",
+          platform: "LinkedIn",
+          time: "16:20",
+          action: "Marqué prospect CHAUD - Suivi prioritaire",
+          icon: Flame,
+          bgColor: "from-green-500 to-emerald-500",
+          textColor: "text-green-50",
+        },
       ],
       summary: [
-        { icon: Flame, text: "CLIENT VIP Marie : Deal 50k validé, attendre votre planning", type: "urgent" },
-        { icon: Calendar, text: "RDV Fournisseur Paul : Échantillons prêts, confirmer demain", type: "normal" },
-        { icon: TrendingUp, text: "Prospect Julie : Intéressée par vos services, programmer call", type: "opportunity" },
-        { icon: DollarSign, text: "Comptable Sophie : Factures Q4 à valider avant vendredi", type: "normal" }
-      ]
+        {
+          icon: DollarSign,
+          text: "🔥 LVMH: Présentation CEO demain 9h - Deal 2M€ en jeu",
+          type: "urgent",
+          color: "text-red-600",
+          bgColor: "bg-red-50",
+          borderColor: "border-red-200",
+        },
+        {
+          icon: TrendingUp,
+          text: "📊 Design: Mockups v3 prêts, validation requise",
+          type: "important",
+          color: "text-orange-600",
+          bgColor: "bg-orange-50",
+          borderColor: "border-orange-200",
+        },
+        {
+          icon: Flame,
+          text: "💰 Tesla France: Prospect 500k€ intéressé",
+          type: "opportunity",
+          color: "text-green-600",
+          bgColor: "bg-green-50",
+          borderColor: "border-green-200",
+        },
+        {
+          icon: Calendar,
+          text: "📅 RDV client IBM: Confirmation meeting demain 14h",
+          type: "normal",
+          color: "text-blue-600",
+          bgColor: "bg-blue-50",
+          borderColor: "border-blue-200",
+        },
+      ],
     },
     family: {
-      title: "Parent avec enfants scolarisés",
-      subtitle: "Ne ratez plus jamais un moment important",
+      title: "Marc, Papa de 2 enfants",
+      subtitle: "Jongle entre boulot et vie de famille",
+      avatar: "👨‍👧‍👦",
+      context: "Entre les groupes école et les messages familiaux...",
       messages: [
         {
-          sender: "École Primaire",
-          content: "Votre fils Tom a de la fièvre, merci de venir le chercher",
+          sender: "🚨 École Sainte-Marie",
+          content:
+            "URGENT - Léa a fait une chute dans la cour. Merci de venir la récupérer immédiatement.",
           type: "urgent",
-          sms: "École urgent - Tom malade à récupérer",
+          platform: "SMS",
+          time: "11:15",
+          sms: "🚨 École URGENT - Léa chute, à récupérer maintenant",
           icon: AlertTriangle,
-          time: "10:45"
+          bgColor: "from-red-500 to-rose-500",
+          textColor: "text-red-50",
         },
         {
-          sender: "Groupe Parents CM2",
-          content: "[23 messages] Discussion sortie scolaire...",
+          sender: "👥 Parents CM2-A (156 messages)",
+          content:
+            "Discussion sortie scolaire, liste matériel, horaires, transport...",
           type: "group",
-          action: "Résumé : Sortie scolaire validée 15/03, autorisation à signer",
+          platform: "WhatsApp",
+          time: "13:30",
+          action: "IA résume: 'Sortie zoo 15/03, RDV 8h30 école, 25€/enfant'",
           icon: Users,
-          time: "12:30"
+          bgColor: "from-blue-500 to-cyan-500",
+          textColor: "text-blue-50",
         },
         {
-          sender: "Pédiatre Dr. Martin",
-          content: "Rappel RDV vaccination Emma demain 14h",
+          sender: "💊 Dr. Dupont (Pédiatre)",
+          content:
+            "Rappel: RDV vaccination Tom demain 14h. Merci d'apporter le carnet de santé.",
           type: "important",
-          action: "Ajouté au calendrier famille",
+          platform: "Email",
+          time: "16:00",
+          action: "Ajouté au calendrier famille + rappel 2h avant",
           icon: Calendar,
-          time: "15:00"
-        }
+          bgColor: "from-purple-500 to-indigo-500",
+          textColor: "text-purple-50",
+        },
       ],
       summary: [
-        { icon: AlertTriangle, text: "URGENT - École: Tom a de la fièvre, à récupérer maintenant", type: "urgent" },
-        { icon: CheckCircle, text: "Groupe CM2: Sortie scolaire le 15/03 validée. Autorisation à signer", type: "normal" },
-        { icon: Calendar, text: "Dr. Martin: RDV vaccination Emma demain 14h", type: "important" },
-        { icon: Gift, text: "Mamie: Confirme sa présence pour l'anniversaire de Léo samedi", type: "normal" }
-      ]
-    }
+        {
+          icon: AlertTriangle,
+          text: "🚨 École: Léa chute - RÉCUPÉRER MAINTENANT",
+          type: "urgent",
+          color: "text-red-600",
+          bgColor: "bg-red-50",
+          borderColor: "border-red-200",
+        },
+        {
+          icon: Users,
+          text: "👥 Sortie scolaire: Zoo 15/03 à 8h30, prévoir 25€",
+          type: "important",
+          color: "text-blue-600",
+          bgColor: "bg-blue-50",
+          borderColor: "border-blue-200",
+        },
+        {
+          icon: Calendar,
+          text: "💊 Dr. Dupont: Vaccination Tom demain 14h",
+          type: "normal",
+          color: "text-purple-600",
+          bgColor: "bg-purple-50",
+          borderColor: "border-purple-200",
+        },
+        {
+          icon: Gift,
+          text: "🎂 Mamie: Confirme gâteau anniversaire samedi",
+          type: "normal",
+          color: "text-pink-600",
+          bgColor: "bg-pink-50",
+          borderColor: "border-pink-200",
+        },
+      ],
+    },
   };
 
   const currentScenario = scenarios[activeTab];
 
-  const getMessageStyle = (type) => {
-    switch (type) {
-      case 'urgent':
-        return 'bg-destructive/10 border-l-4 border-destructive';
-      case 'opportunity':
-        return 'bg-success/10 border-l-4 border-success';
-      case 'important':
-        return 'bg-warning/10 border-l-4 border-warning';
-      case 'group':
-        return 'bg-purple-500/10 border-l-4 border-purple-500';
+  const getPlatformIcon = (platform) => {
+    switch (platform) {
+      case "WhatsApp":
+        return "💬";
+      case "Telegram":
+        return "✈️";
+      case "SMS":
+        return "📱";
+      case "Email":
+        return "📧";
+      case "LinkedIn":
+        return "💼";
       default:
-        return 'bg-card/20 border-l-4 border-muted';
-    }
-  };
-
-  const getSummaryStyle = (type) => {
-    switch (type) {
-      case 'urgent':
-        return 'text-destructive';
-      case 'opportunity':
-        return 'text-success';
-      case 'important':
-        return 'text-warning';
-      default:
-        return 'text-primary';
+        return "💬";
     }
   };
 
   return (
-    <section id="demo" className="py-24 bg-background">
-      <div className="container max-w-7xl mx-auto px-4">
+    <section
+      id="demo"
+      className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
+    >
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <AnimateOnScroll>
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
-              <Smartphone className="w-4 h-4 text-primary" />
-              <span className="text-primary font-medium text-sm">DÉMONSTRATION INTERACTIVE</span>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full mb-4 text-sm font-medium shadow-lg">
+              <Zap className="w-4 h-4" />
+              <span>DÉMONSTRATION LIVE</span>
             </div>
-            
-            <h2 className="font-headline font-bold text-foreground text-[clamp(2rem,5vw,3.5rem)] leading-tight mb-6">
-              NotifyMe en Action
-              <br />
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Exemples Réels
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              NotifyMe en{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Action Réelle
               </span>
             </h2>
-            
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Découvrez comment NotifyMe transforme le chaos quotidien en 
-              <span className="text-foreground font-medium"> communication organisée et efficace</span>.
+
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Découvrez comment des professionnels comme vous{" "}
+              <span className="text-gray-900 font-semibold">
+                transforment leur quotidien
+              </span>{" "}
+              avec NotifyMe
             </p>
           </div>
         </AnimateOnScroll>
 
-        {/* Onglets améliorés */}
+        {/* Onglets Mobile-First */}
         <AnimateOnScroll delay={100}>
-          <div className="max-w-md mx-auto mb-12">
-            <div className="flex bg-card/10 backdrop-blur-sm border border-border rounded-2xl p-1">
+          <div className="max-w-sm sm:max-w-md mx-auto mb-8 sm:mb-12">
+            <div className="flex bg-white border border-gray-200 rounded-2xl p-1 shadow-lg">
               <Button
-                onClick={() => setActiveTab('business')}
+                onClick={() => setActiveTab("business")}
                 variant="ghost"
                 className={cn(
-                  "flex-1 rounded-xl transition-all duration-300",
-                  activeTab === 'business' 
-                    ? 'bg-gradient-primary text-primary-foreground shadow-lg' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-card/20'
+                  "flex-1 rounded-xl transition-all duration-300 text-sm sm:text-base",
+                  activeTab === "business"
+                    ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
-                <Briefcase className="w-4 h-4 mr-2" />
-                Business
+                <Briefcase className="w-4 h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Business</span>
+                <span className="sm:hidden">Pro</span>
               </Button>
               <Button
-                onClick={() => setActiveTab('family')}
+                onClick={() => setActiveTab("family")}
                 variant="ghost"
                 className={cn(
-                  "flex-1 rounded-xl transition-all duration-300",
-                  activeTab === 'family' 
-                    ? 'bg-gradient-primary text-primary-foreground shadow-lg' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-card/20'
+                  "flex-1 rounded-xl transition-all duration-300 text-sm sm:text-base",
+                  activeTab === "family"
+                    ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
-                <Users className="w-4 h-4 mr-2" />
+                <Users className="w-4 h-4 mr-1 sm:mr-2" />
                 Famille
               </Button>
             </div>
           </div>
         </AnimateOnScroll>
 
-        {/* Contenu du scénario */}
-        <AnimateOnScroll key={activeTab}>
-          <div className="bg-gradient-to-br from-card/5 to-muted/5 backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12">
-            
-            {/* Titre du scénario */}
-            <div className="text-center mb-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                Scénario : {currentScenario.title}
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                {currentScenario.subtitle}
-              </p>
-            </div>
+        {/* Persona Card - Sans AnimateOnScroll pour éviter la duplication */}
+        <div className="max-w-md mx-auto mb-8 p-6 bg-white border border-gray-200 rounded-2xl shadow-lg text-center transition-all duration-500">
+          <div className="text-4xl mb-3">{currentScenario.avatar}</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            {currentScenario.title}
+          </h3>
+          <p className="text-gray-600 mb-2">{currentScenario.subtitle}</p>
+          <p className="text-sm text-gray-500 italic">
+            {currentScenario.context}
+          </p>
+        </div>
 
-            <div className="grid lg:grid-cols-2 gap-12">
-              
-              {/* Messages entrants */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Smartphone className="w-5 h-5 text-primary" />
-                  </div>
-                  <h4 className="text-xl font-bold text-foreground">Messages entrants</h4>
+        {/* Contenu principal - Transition fluide */}
+        <div className="bg-white border border-gray-200 rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl transition-all duration-500">
+          <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12">
+            {/* Messages entrants */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 text-white" />
                 </div>
-                
-                <div className="space-y-6">
-                  {currentScenario.messages.map((message, index) => (
-                    <div key={index} className={`${getMessageStyle(message.type)} p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow`}>
-                      <div className="flex items-center gap-3 mb-2">
-                        <message.icon className="w-4 h-4 text-foreground" />
-                        <p className="font-bold text-foreground">{message.sender}</p>
-                        <span className="text-xs text-muted-foreground ml-auto flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {message.time}
-                        </span>
+                <h4 className="text-lg sm:text-xl font-bold text-gray-900">
+                  Messages reçus
+                </h4>
+                <div className="ml-auto text-xs text-gray-500 flex items-center gap-1">
+                  <Clock className="w-3 h-3" />
+                  Aujourd'hui
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {currentScenario.messages.map((message, index) => (
+                  <div
+                    key={`${activeTab}-message-${index}`}
+                    className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    {/* Background gradient */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${message.bgColor} opacity-90`}
+                    ></div>
+
+                    {/* Content */}
+                    <div className="relative p-4 sm:p-5">
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className="flex-shrink-0">
+                          <message.icon
+                            className={`w-5 h-5 ${message.textColor}`}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-2 flex-wrap">
+                            <p
+                              className={`font-bold text-sm sm:text-base ${message.textColor}`}
+                            >
+                              {message.sender}
+                            </p>
+                            <span
+                              className={`text-xs px-2 py-1 bg-black/20 rounded-full ${message.textColor}`}
+                            >
+                              {getPlatformIcon(message.platform)}{" "}
+                              {message.platform}
+                            </span>
+                            <span
+                              className={`text-xs ${message.textColor} opacity-75 ml-auto`}
+                            >
+                              {message.time}
+                            </span>
+                          </div>
+                          <p
+                            className={`text-sm sm:text-base leading-relaxed ${message.textColor} opacity-95 mb-3`}
+                          >
+                            "{message.content}"
+                          </p>
+                        </div>
                       </div>
-                      
-                      <p className="text-muted-foreground mb-3 leading-relaxed">
-                        "{message.content}"
-                      </p>
-                      
+
+                      {/* Actions */}
                       {message.sms && (
-                        <div className="bg-destructive/20 border border-destructive/30 rounded-lg p-2">
-                          <p className="text-sm font-bold text-destructive flex items-center gap-2">
-                            <Siren className="w-3 h-3" />
-                            SMS envoyé : "{message.sms}"
+                        <div className="bg-black/20 backdrop-blur-sm border border-white/30 rounded-xl p-3 mb-2">
+                          <p
+                            className={`text-xs sm:text-sm font-bold ${message.textColor} flex items-center gap-2`}
+                          >
+                            <Bell className="w-4 h-4" />
+                            SMS envoyé: "{message.sms}"
                           </p>
                         </div>
                       )}
-                      
+
                       {message.action && (
-                        <div className="bg-primary/10 border border-primary/20 rounded-lg p-2">
-                          <p className="text-sm text-primary flex items-center gap-2">
-                            <FileText className="w-3 h-3" />
+                        <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-3">
+                          <p
+                            className={`text-xs sm:text-sm ${message.textColor} flex items-center gap-2`}
+                          >
+                            <Zap className="w-4 h-4" />
                             {message.action}
                           </p>
                         </div>
                       )}
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Résumé intelligent */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-foreground">
-                    Résumé {activeTab === 'business' ? 'PRO' : 'FAMILLE'} (19h00)
-                  </h4>
-                </div>
-                
-                <div className="bg-card/10 backdrop-blur-sm border border-border rounded-2xl p-6">
-                  <ul className="space-y-4">
-                    {currentScenario.summary.map((item, index) => (
-                      <li key={index} className="flex items-start gap-3 group hover:bg-card/5 p-3 rounded-lg transition-colors">
-                        <item.icon className={`w-5 h-5 mt-0.5 ${getSummaryStyle(item.type)}`} />
-                        <span className="text-foreground leading-relaxed group-hover:text-primary transition-colors">
-                          {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Stats en bas */}
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center p-4 bg-card/5 rounded-xl">
-                <div className="text-2xl font-bold text-primary">30+</div>
-                <div className="text-sm text-muted-foreground">Messages filtrés</div>
+            {/* Résumé intelligent */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <FileText className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900">
+                    Résumé {activeTab === "business" ? "PRO" : "FAMILLE"}
+                  </h4>
+                  <p className="text-sm text-gray-500">
+                    19h00 - Digest quotidien
+                  </p>
+                </div>
               </div>
-              <div className="text-center p-4 bg-card/5 rounded-xl">
-                <div className="text-2xl font-bold text-success">3</div>
-                <div className="text-sm text-muted-foreground">Alertes SMS</div>
-              </div>
-              <div className="text-center p-4 bg-card/5 rounded-xl">
-                <div className="text-2xl font-bold text-warning">5min</div>
-                <div className="text-sm text-muted-foreground">Temps économisé</div>
-              </div>
-              <div className="text-center p-4 bg-card/5 rounded-xl">
-                <div className="text-2xl font-bold text-cyan">100%</div>
-                <div className="text-sm text-muted-foreground">Messages importants</div>
+
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-2xl p-4 sm:p-6">
+                <div className="space-y-3">
+                  {currentScenario.summary.map((item, index) => (
+                    <div
+                      key={`${activeTab}-summary-${index}`}
+                      className={`${item.bgColor} ${item.borderColor} border-l-4 p-3 sm:p-4 rounded-lg hover:shadow-md transition-all duration-300 group`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <item.icon
+                          className={`w-5 h-5 mt-0.5 ${item.color} group-hover:scale-110 transition-transform duration-300`}
+                        />
+                        <span className="text-gray-800 text-sm sm:text-base leading-relaxed group-hover:text-gray-900 transition-colors font-medium">
+                          {item.text}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bouton action */}
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Voir détails complets
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
-        </AnimateOnScroll>
 
-        {/* CTA final */}
-        <AnimateOnScroll delay={400}>
-          <div className="mt-16 text-center">
-            <div className="inline-block p-6 bg-gradient-to-br from-primary/10 to-cyan/10 border border-primary/20 rounded-2xl">
-              <p className="text-lg text-foreground font-medium">
-                <strong className="text-primary">Résultat :</strong> Zéro stress, zéro message important manqué ! 🎯
+          {/* Stats de performance - Chiffres gonflés */}
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <h5 className="text-center text-lg font-bold text-gray-900 mb-4">
+              📊 Impact temps réel
+            </h5>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-600 mb-1">
+                  235
+                </div>
+                <div className="text-xs sm:text-sm text-blue-600 font-medium">
+                  Messages filtrés
+                </div>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200">
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-1">
+                  12
+                </div>
+                <div className="text-xs sm:text-sm text-green-600 font-medium">
+                  Alertes SMS
+                </div>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border border-purple-200">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-1">
+                  1h45
+                </div>
+                <div className="text-xs sm:text-sm text-purple-600 font-medium">
+                  Temps économisé
+                </div>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl border border-orange-200">
+                <div className="text-2xl sm:text-3xl font-bold text-orange-600 mb-1">
+                  0
+                </div>
+                <div className="text-xs sm:text-sm text-orange-600 font-medium">
+                  Messages ratés
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA final avec témoignage */}
+        <AnimateOnScroll>
+          <div className="mt-12 text-center">
+            <div className="max-w-2xl mx-auto p-6 sm:p-8 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl">
+              <div className="text-4xl mb-4">🎯</div>
+              <p className="text-lg sm:text-xl text-gray-800 font-semibold mb-2">
+                "Fini le stress des messages ratés !"
+              </p>
+              <p className="text-gray-600 italic">
+                {activeTab === "business"
+                  ? "Sarah ne rate plus jamais un deal important grâce aux résumés intelligents"
+                  : "Marc gère sereinement famille et travail avec les alertes prioritaires"}
               </p>
             </div>
           </div>
