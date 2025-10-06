@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,9 +9,13 @@ export default function Footer() {
         <div className="flex flex-col items-center space-y-8">
           {/* Logo et nom */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-              <Bell className="w-5 h-5 text-white" />
-            </div>
+            <Image
+              src="/notifylogo.png"
+              alt="NotifyMe"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
             <span className="text-xl font-bold text-white">NotifyMe</span>
           </div>
 

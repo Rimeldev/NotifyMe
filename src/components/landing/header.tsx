@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Bell, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -84,51 +83,72 @@ export default function Header() {
           </Button>
 
           {/* Menu Mobile */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden text-white hover:bg-white/10"
-              >
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-
-            <SheetContent
-              side="right"
-              className="w-[280px] bg-gray-900 border-gray-800"
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:bg-white/10"
             >
-              <div className="flex flex-col h-full pt-8">
-                {/* Logo Mobile */}
-                <div className="flex items-center gap-3 mb-8">
-                  <Bell className="w-6 h-6 text-blue-500" />
-                  <span className="text-xl font-bold text-white">NotifyMe</span>
-                </div>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </Button>
 
-                {/* Navigation Mobile */}
-                <nav className="flex flex-col gap-4 flex-1">
-                  {navigationItems.map((item) => (
-                    <button
-                      key={item.href}
-                      onClick={() => handleNavClick(item.href)}
-                      className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-2"
+            {/* Menu mobile overlay */}
+            {isOpen && (
+              <div className="fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-md">
+                <div className="flex flex-col h-full p-6">
+                  {/* Header mobile */}
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src="/notifylogo.png"
+                        alt="NotifyMe"
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
+                      />
+                      <span className="text-xl font-bold text-white">
+                        NotifyMe
+                      </span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setIsOpen(false)}
+                      className="text-white hover:bg-white/10"
                     >
-                      {item.label}
-                    </button>
-                  ))}
-                </nav>
+                      <X className="h-6 w-6" />
+                    </Button>
+                  </div>
 
-                {/* CTA Mobile */}
-                <Button
-                  onClick={handleCtaClick}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg mb-4"
-                >
-                  Rejoindre la liste
-                </Button>
+                  {/* Navigation Mobile */}
+                  <nav className="flex flex-col gap-6 flex-1">
+                    {navigationItems.map((item) => (
+                      <button
+                        key={item.href}
+                        onClick={() => handleNavClick(item.href)}
+                        className="text-left text-gray-300 hover:text-white transition-colors duration-200 font-medium py-3 text-lg"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </nav>
+
+                  {/* CTA Mobile */}
+                  <Button
+                    onClick={handleCtaClick}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg text-lg font-semibold"
+                  >
+                    Rejoindre la liste
+                  </Button>
+                </div>
               </div>
-            </SheetContent>
-          </Sheet>
+            )}
+          </div>
         </nav>
       </div>
     </header>
