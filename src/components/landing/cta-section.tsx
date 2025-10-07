@@ -18,12 +18,15 @@ export default function CtaSection() {
   ];
 
   return (
-    <section id="cta" className="relative overflow-hidden py-20 bg-slate-900">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-cyan/10"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(59,130,246,0.15),transparent)]"></div>
+    <section
+      id="cta"
+      className="relative py-20 bg-slate-900 section-overflow-fix no-internal-scroll"
+    >
+      {/* Background Effects - contenus dans la section */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-cyan/10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(59,130,246,0.15),transparent)] pointer-events-none"></div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 mx-auto px-4 no-internal-scroll">
         <AnimateOnScroll>
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge de statut */}
@@ -35,7 +38,7 @@ export default function CtaSection() {
             </div>
 
             {/* Titre principal */}
-            <h2 className="font-headline font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+            <h2 className="content-container font-headline font-bold text-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
               Rejoignez les premiers{" "}
               <span className="bg-gradient-to-r from-primary via-cyan to-purple bg-clip-text text-transparent">
                 utilisateurs
@@ -45,7 +48,7 @@ export default function CtaSection() {
             </h2>
 
             {/* Description */}
-            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="content-container text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
               Soyez averti dès le lancement et bénéficiez d'un accès prioritaire
               à la solution qui révolutionnera vos communications
               professionnelles.
@@ -81,7 +84,7 @@ export default function CtaSection() {
                   <ArrowRight className="ml-3 w-6 h-6" />
                 </Button>
 
-                <p className="text-slate-400">
+                <p className="content-container text-slate-400">
                   Accès gratuit - Aucun engagement requis
                 </p>
               </div>

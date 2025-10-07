@@ -63,7 +63,10 @@ const useCases = [
 
 export default function UseCasesSection() {
   return (
-    <section id="use-cases" className="py-12 bg-background">
+    <section
+      id="use-cases"
+      className="section-overflow-fix py-12 bg-background"
+    >
       <div className="container mx-auto px-4">
         {/* Header */}
         <AnimateOnScroll>
@@ -85,7 +88,7 @@ export default function UseCasesSection() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {useCases.map((useCase, index) => (
             <AnimateOnScroll key={useCase.title} delay={index * 100}>
-              <Card className="group bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full overflow-hidden">
+              <Card className="group bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full overflow-visible">
                 {/* Card Header avec gradient */}
                 <div
                   className={`h-1 bg-gradient-to-r ${useCase.gradient}`}

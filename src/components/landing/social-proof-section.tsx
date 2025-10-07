@@ -16,26 +16,29 @@ const testimonials = [
   {
     avatar: "M",
     name: "Marc, CEO Startup",
-    quote: "30 conversations clients + 12 groupes projets... NotifyMe a sauvé mon business !",
-    context: "45 convos/jour"
+    quote:
+      "30 conversations clients + 12 groupes projets... NotifyMe a sauvé mon business !",
+    context: "45 convos/jour",
   },
   {
     avatar: "S",
     name: "Sophie, Maman de 3 enfants",
-    quote: "Entre les messages école et les groupes famille, je ratais tout. Plus maintenant !",
-    context: "8 groupes famille"
+    quote:
+      "Entre les messages école et les groupes famille, je ratais tout. Plus maintenant !",
+    context: "8 groupes famille",
   },
   {
     avatar: "A",
     name: "Ahmed, Designer Freelance",
-    quote: "Clients sur WhatsApp, équipe sur Telegram... NotifyMe unifie tout intelligemment.",
-    context: "Multi-plateformes"
+    quote:
+      "Clients sur WhatsApp, équipe sur Telegram... NotifyMe unifie tout intelligemment.",
+    context: "Multi-plateformes",
   },
 ];
 
 export default function SocialProofSection() {
   return (
-    <section className="bg-secondary">
+    <section className="section-overflow-fix bg-secondary">
       <div className="container">
         <AnimateOnScroll>
           <div className="max-w-md mx-auto">
@@ -76,8 +79,10 @@ export default function SocialProofSection() {
                         "{testimonial.quote}"
                       </blockquote>
                       <cite className="mt-4 not-italic text-muted-foreground">
-                        <span className="font-semibold text-secondary-foreground">{testimonial.name}</span>
-                        <br/>
+                        <span className="font-semibold text-secondary-foreground">
+                          {testimonial.name}
+                        </span>
+                        <br />
                         {testimonial.context}
                       </cite>
                     </div>
@@ -85,8 +90,8 @@ export default function SocialProofSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="text-white"/>
-            <CarouselNext className="text-white"/>
+            <CarouselPrevious className="text-white" />
+            <CarouselNext className="text-white" />
           </Carousel>
         </AnimateOnScroll>
       </div>
