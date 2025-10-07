@@ -210,7 +210,7 @@ export default function DemoSection() {
   return (
     <section
       id="demo"
-      className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
+      className="section-overflow-fix py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}

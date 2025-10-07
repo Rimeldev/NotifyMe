@@ -21,7 +21,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pt-16 pb-8 sm:pt-20 sm:pb-12"
+      className="relative section-overflow-fix pt-16 pb-8 sm:pt-20 sm:pb-12"
     >
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-background">
@@ -30,7 +30,7 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[60vh] sm:min-h-[75vh]">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center py-8 sm:py-12 lg:py-16">
           {/* Contenu gauche */}
           <div className="space-y-4 sm:space-y-6">
             {/* Badge statut */}
@@ -43,7 +43,7 @@ export default function HeroSection() {
 
             {/* Titre principal - Plus direct et percutant */}
             <AnimateOnScroll delay={200}>
-              <h1 className="font-bold text-white text-2xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
+              <h1 className="content-container font-bold text-white text-2xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                   Communication intelligente
                 </span>{" "}
@@ -53,7 +53,7 @@ export default function HeroSection() {
 
             {/* Description plus courte et claire */}
             <AnimateOnScroll delay={300}>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl">
+              <p className="content-container text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl">
                 Surveillance 360°, résumés intelligents et alertes SMS
                 personnalisées. NotifyMe unifie <strong>toutes</strong> vos
                 conversations et vous livre seulement l'essentiel, selon votre
@@ -63,7 +63,7 @@ export default function HeroSection() {
 
             {/* Points clés simplifiés */}
             <AnimateOnScroll delay={400}>
-              <div className="space-y-1.5 sm:space-y-2">
+              <div className="content-container space-y-1.5 sm:space-y-2">
                 <div className="flex items-center gap-3 text-gray-300">
                   <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
                   <span className="text-sm sm:text-base">
@@ -111,13 +111,13 @@ export default function HeroSection() {
 
           {/* Mockup créatif et interactif */}
           <AnimateOnScroll delay={300} className="lg:order-last order-first">
-            <div className="relative">
-              {/* Éléments flottants animés */}
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-bounce"></div>
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-400 to-cyan-400 rounded-full opacity-30 animate-pulse"></div>
+            <div className="relative absolute-container p-8 sm:p-12">
+              {/* Éléments flottants animés - repositionnés pour éviter le débordement */}
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-bounce"></div>
+              <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-green-400 to-cyan-400 rounded-full opacity-30 animate-pulse"></div>
 
               {/* Smartphone mockup */}
-              <div className="relative mx-auto max-w-xs sm:max-w-sm">
+              <div className="relative mx-auto max-w-xs sm:max-w-sm z-10">
                 {/* Phone frame */}
                 <div className="bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
                   <div className="bg-black rounded-[2.5rem] p-1">
@@ -262,17 +262,17 @@ export default function HeroSection() {
                           </div>
                         </div>
 
-                        {/* Particules flottantes */}
+                        {/* Particules flottantes - repositionnées */}
                         <div className="absolute top-20 left-6 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-60"></div>
                         <div className="absolute top-32 right-8 w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse opacity-40"></div>
-                        <div className="absolute top-48 left-12 w-2 h-2 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
+                        <div className="absolute top-40 left-8 w-2 h-2 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Effets de lumière */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-[3rem] animate-pulse"></div>
+                {/* Effets de lumière - contenus dans le mockup */}
+                <div className="absolute inset-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-[2.5rem] animate-pulse pointer-events-none"></div>
               </div>
             </div>
           </AnimateOnScroll>

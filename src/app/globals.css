@@ -68,20 +68,169 @@ body {
     }
     html {
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
     body {
         @apply bg-background text-foreground;
         overflow-x: hidden;
         width: 100%;
         max-width: 100vw;
+        position: relative;
     }
     section {
         @apply py-8 sm:py-12;
         overflow-x: hidden;
+        overflow-y: visible;
+        position: relative;
+        width: 100%;
     }
+
     .container {
         max-width: 100%;
         overflow-x: hidden;
+        overflow-y: visible;
+        position: relative;
+    }
+
+    /* Prevent overflow issues on mobile and desktop */
+    .section-overflow-fix {
+        overflow-x: hidden;
+        overflow-y: visible;
+        position: relative;
+        width: 100%;
+    }
+
+    /* Fix for absolute positioned elements */
+    .absolute-container {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+
+    /* Mobile-specific overflow fixes */
+    @media (max-width: 768px) {
+        body {
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .section-overflow-fix {
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+
+        /* Prevent horizontal overflow on mobile */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Fix for animations that might cause overflow */
+        .animate-bounce,
+        .animate-pulse,
+        .animate-ping {
+            transform-origin: center;
+            will-change: transform;
+        }
+    }
+
+    /* Desktop improvements */
+    @media (min-width: 769px) {
+        .section-overflow-fix {
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+    }
+
+    /* Prevent content from breaking layout */
+    .content-container {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Ensure no internal scrollbars in sections - targeted fix */
+    section > div {
+        overflow-y: visible !important;
+    }
+
+    /* Prevent internal scrollbars in specific problematic containers */
+    .no-internal-scroll {
+        overflow-y: visible !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    /* Fix for containers that might cause internal scrolling */
+    .container > div,
+    .max-w-7xl > div,
+    .max-w-4xl > div,
+    .max-w-5xl > div {
+        overflow-y: visible !important;
+    }
+
+    /* Specific fix for CTA section and other problematic sections */
+    #cta,
+    #cta > div,
+    #cta .container,
+    #cta .container > div {
+        overflow-y: visible !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    /* Fix for any section that might have internal scrollbars */
+    section[id] {
+        overflow-y: visible !important;
+    }
+
+    section[id] > div {
+        overflow-y: visible !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    /* Ensure all direct children of sections don't have internal scroll */
+    section > .container,
+    section > div.container,
+    section > div > .container {
+        overflow-y: visible !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    /* Force all elements inside sections to not have internal scrollbars */
+    section * {
+        overflow-y: visible !important;
+    }
+
+    /* Exception for the main page scroll */
+    html, body {
+        overflow-y: auto !important;
+    }
+
+    /* Prevent any div from having internal scroll unless explicitly needed */
+    div:not(.scroll-area):not([data-radix-scroll-area-viewport]) {
+        overflow-y: visible !important;
+        max-height: none !important;
+    }
+
+    /* Specific targeting for common layout containers */
+    .relative,
+    .absolute,
+    .grid,
+    .flex,
+    .space-y-4,
+    .space-y-6,
+    .space-y-8,
+    .space-y-12,
+    .space-y-16,
+    .space-y-20 {
+        overflow-y: visible !important;
+        max-height: none !important;
+        height: auto !important;
     }
 }
 

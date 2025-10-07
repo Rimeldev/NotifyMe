@@ -8,7 +8,8 @@ const features = [
   {
     icon: Bot,
     title: "Surveillance 360° Multi-Plateformes",
-    description: "Monitoring intelligent de TOUTES vos conversations importantes.",
+    description:
+      "Monitoring intelligent de TOUTES vos conversations importantes.",
     points: [
       "Messages privés (clients, collègues, famille)",
       "Groupes WhatsApp/Telegram/Messenger",
@@ -23,7 +24,8 @@ const features = [
   {
     icon: FileText,
     title: "Résumés Contextuels Intelligents",
-    description: "Résumés personnalisés selon le contexte : pro, perso, famille.",
+    description:
+      "Résumés personnalisés selon le contexte : pro, perso, famille.",
     points: [
       "Résumé PRO : clients + projets + deadlines",
       "Résumé FAMILLE : urgences + événements + école",
@@ -66,7 +68,10 @@ const features = [
 
 export default function SolutionSection() {
   return (
-    <section id="solution" className="relative py-24 bg-background">
+    <section
+      id="solution"
+      className="relative section-overflow-fix py-24 bg-background"
+    >
       <div className="container max-w-7xl mx-auto px-4">
         {/* Header professionnel */}
         <AnimateOnScroll>
@@ -74,20 +79,29 @@ export default function SolutionSection() {
             {/* Badge d'introduction */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
               <Shield className="w-4 h-4 text-primary" />
-              <span className="text-primary font-medium text-sm">SOLUTION COMPLÈTE</span>
+              <span className="text-primary font-medium text-sm">
+                SOLUTION COMPLÈTE
+              </span>
             </div>
-            
+
             <h2 className="font-headline font-bold text-foreground text-[clamp(2rem,5vw,3.5rem)] leading-tight mb-6">
-              Reprenez le contrôle avec<br />
+              Reprenez le contrôle avec
+              <br />
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 4 Super-Pouvoirs
               </span>
               <Rocket className="inline w-10 h-10 ml-3 text-primary animate-bounce" />
             </h2>
-            
+
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Découvrez comment <strong className="text-primary">NotifyMe</strong> vous simplifie la vie en 
-              <span className="text-foreground font-medium"> filtrant, priorisant et résumant</span> vos conversations.
+              Découvrez comment{" "}
+              <strong className="text-primary">NotifyMe</strong> vous simplifie
+              la vie en
+              <span className="text-foreground font-medium">
+                {" "}
+                filtrant, priorisant et résumant
+              </span>{" "}
+              vos conversations.
             </p>
           </div>
         </AnimateOnScroll>
@@ -96,26 +110,29 @@ export default function SolutionSection() {
         <div className="grid gap-8 md:grid-cols-2">
           {features.map((feature, index) => (
             <AnimateOnScroll key={feature.title} delay={index * 150}>
-              <div className={`relative bg-gradient-to-br ${feature.gradient} backdrop-blur-md border border-border rounded-2xl shadow-xl ${feature.borderGlow} hover:scale-[1.02] transition-all duration-500 h-full flex flex-col group overflow-hidden`}>
-                
+              <div
+                className={`relative bg-gradient-to-br ${feature.gradient} backdrop-blur-md border border-border rounded-2xl shadow-xl ${feature.borderGlow} hover:scale-[1.02] transition-all duration-500 h-full flex flex-col group overflow-visible`}
+              >
                 {/* Effet de brillance au survol */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                
+
                 {/* Badge numéro */}
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-primary to-cyan rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg z-10">
+                <div className="absolute top-2 right-2 w-8 h-8 bg-gradient-to-r from-primary to-cyan rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg z-10">
                   {index + 1}
                 </div>
 
                 {/* Header de la card */}
                 <div className="p-8 pb-4">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.iconGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-br ${feature.iconGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <feature.icon className="w-8 h-8 text-white" />
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-foreground mb-3 leading-tight">
                     {feature.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
@@ -162,7 +179,8 @@ export default function SolutionSection() {
                 Bientôt disponible 🚀
               </h3>
               <p className="text-lg text-muted-foreground">
-                Ces 4 super-pouvoirs travaillent ensemble pour vous faire gagner du temps et réduire votre stress.
+                Ces 4 super-pouvoirs travaillent ensemble pour vous faire gagner
+                du temps et réduire votre stress.
               </p>
             </div>
           </div>
