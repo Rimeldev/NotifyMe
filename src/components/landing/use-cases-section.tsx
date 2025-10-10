@@ -1,10 +1,10 @@
-import { Briefcase, UserCheck, Heart, Globe, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { AnimateOnScroll } from "../ui/animate-on-scroll";
-
+import Image from "next/image";
 const useCases = [
   {
-    icon: Briefcase,
+    image: "/Entrepreneurs & Freelances.png",
     title: "Entrepreneurs & Freelances",
     description: "Gérez vos opportunités commerciales sans rien rater",
     points: [
@@ -14,11 +14,9 @@ const useCases = [
       "Ne ratez plus un lead critique",
     ],
     gradient: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-50",
-    iconColor: "text-blue-600",
   },
   {
-    icon: UserCheck,
+    image: "/Managers & Chefs de Projet.png",
     title: "Managers & Chefs de Projet",
     description: "Coordonnez vos équipes efficacement",
     points: [
@@ -28,11 +26,9 @@ const useCases = [
       "Coordination multi-équipes",
     ],
     gradient: "from-purple-500 to-pink-500",
-    bgColor: "bg-purple-50",
-    iconColor: "text-purple-600",
   },
   {
-    icon: Heart,
+    image: "/Parents Actifs.png",
     title: "Parents Actifs",
     description: "Restez connectés avec votre famille",
     points: [
@@ -42,11 +38,9 @@ const useCases = [
       "Rendez-vous médicaux",
     ],
     gradient: "from-rose-500 to-orange-500",
-    bgColor: "bg-rose-50",
-    iconColor: "text-rose-600",
   },
   {
-    icon: Globe,
+    image: "/Équipes Distribuées.png",
     title: "Équipes Distribuées",
     description: "Unifiez vos communications globales",
     points: [
@@ -56,8 +50,6 @@ const useCases = [
       "Communication asynchrone 24/7",
     ],
     gradient: "from-green-500 to-emerald-500",
-    bgColor: "bg-green-50",
-    iconColor: "text-green-600",
   },
 ];
 
@@ -65,7 +57,7 @@ export default function UseCasesSection() {
   return (
     <section
       id="use-cases"
-      className="section-overflow-fix py-12 bg-background"
+      className="py-12 bg-background"
     >
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -88,18 +80,23 @@ export default function UseCasesSection() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {useCases.map((useCase, index) => (
             <AnimateOnScroll key={useCase.title} delay={index * 100}>
-              <Card className="group bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full overflow-visible">
+              <Card className="group bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full overflow-hidden">
                 {/* Card Header avec gradient */}
                 <div
                   className={`h-1 bg-gradient-to-r ${useCase.gradient}`}
                 ></div>
 
                 <CardHeader className="pb-3">
-                  {/* Icon container */}
-                  <div
-                    className={`inline-flex p-3 rounded-xl ${useCase.bgColor} mb-3 group-hover:scale-105 transition-transform duration-300`}
-                  >
-                    <useCase.icon className={`w-6 h-6 ${useCase.iconColor}`} />
+                  {/* Image container */}
+                  <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 group-hover:scale-[1.01] transition-transform duration-300 border border-slate-100">
+                    <Image
+                      src={useCase.image}
+                      alt={useCase.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                      priority={false}
+                    />
                   </div>
 
                   {/* Title */}
@@ -121,7 +118,7 @@ export default function UseCasesSection() {
                         key={point}
                         className="flex items-start gap-2 text-slate-700"
                       >
-                        <CheckCircle className="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
+                        <CheckCircle className="w-3 h-3 aspect-square text-green-500 mt-1 flex-shrink-0 drop-shadow-sm" />
                         <span className="text-xs leading-relaxed">{point}</span>
                       </li>
                     ))}

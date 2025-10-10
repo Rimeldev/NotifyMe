@@ -188,7 +188,7 @@ export default function DemoSection() {
     },
   };
 
-  const currentScenario = scenarios[activeTab];
+  const currentScenario = scenarios[activeTab as keyof typeof scenarios];
 
   const getPlatformIcon = (platform) => {
     switch (platform) {
@@ -210,14 +210,14 @@ export default function DemoSection() {
   return (
     <section
       id="demo"
-      className="section-overflow-fix py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
+      className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white"
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <AnimateOnScroll>
           <div className="text-center mb-8 sm:mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full mb-4 text-sm font-medium shadow-lg">
-              <Zap className="w-4 h-4" />
+              <Zap className="w-4 h-4 aspect-square drop-shadow-sm" />
               <span>DÉMONSTRATION LIVE</span>
             </div>
 
@@ -252,7 +252,7 @@ export default function DemoSection() {
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
-                <Briefcase className="w-4 h-4 mr-1 sm:mr-2" />
+                <Briefcase className="w-4 h-4 aspect-square mr-1 sm:mr-2 drop-shadow-sm" />
                 <span className="hidden sm:inline">Business</span>
                 <span className="sm:hidden">Pro</span>
               </Button>
@@ -266,7 +266,7 @@ export default function DemoSection() {
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
-                <Users className="w-4 h-4 mr-1 sm:mr-2" />
+                <Users className="w-4 h-4 aspect-square mr-1 sm:mr-2 drop-shadow-sm" />
                 Famille
               </Button>
             </div>
@@ -291,20 +291,20 @@ export default function DemoSection() {
             {/* Messages entrants */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 aspect-square bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <Smartphone className="w-5 h-5 aspect-square text-white drop-shadow-sm" />
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-gray-900">
                   Messages reçus
                 </h4>
                 <div className="ml-auto text-xs text-gray-500 flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
+                  <Clock className="w-3 h-3 aspect-square drop-shadow-sm" />
                   Aujourd'hui
                 </div>
               </div>
 
               <div className="space-y-4">
-                {currentScenario.messages.map((message, index) => (
+                {currentScenario.messages.map((message, index: number) => (
                   <div
                     key={`${activeTab}-message-${index}`}
                     className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
@@ -319,7 +319,7 @@ export default function DemoSection() {
                       <div className="flex items-start gap-3 mb-3">
                         <div className="flex-shrink-0">
                           <message.icon
-                            className={`w-5 h-5 ${message.textColor}`}
+                            className={`w-5 h-5 aspect-square ${message.textColor} drop-shadow-sm`}
                           />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -355,7 +355,7 @@ export default function DemoSection() {
                           <p
                             className={`text-xs sm:text-sm font-bold ${message.textColor} flex items-center gap-2`}
                           >
-                            <Bell className="w-4 h-4" />
+                            <Bell className="w-4 h-4 aspect-square drop-shadow-sm" />
                             SMS envoyé: "{message.sms}"
                           </p>
                         </div>
@@ -366,7 +366,7 @@ export default function DemoSection() {
                           <p
                             className={`text-xs sm:text-sm ${message.textColor} flex items-center gap-2`}
                           >
-                            <Zap className="w-4 h-4" />
+                            <Zap className="w-4 h-4 aspect-square drop-shadow-sm" />
                             {message.action}
                           </p>
                         </div>
@@ -380,8 +380,8 @@ export default function DemoSection() {
             {/* Résumé intelligent */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 aspect-square bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <FileText className="w-5 h-5 aspect-square text-white drop-shadow-sm" />
                 </div>
                 <div>
                   <h4 className="text-lg sm:text-xl font-bold text-gray-900">
@@ -402,7 +402,7 @@ export default function DemoSection() {
                     >
                       <div className="flex items-start gap-3">
                         <item.icon
-                          className={`w-5 h-5 mt-0.5 ${item.color} group-hover:scale-110 transition-transform duration-300`}
+                          className={`w-5 h-5 aspect-square mt-0.5 ${item.color} group-hover:scale-110 transition-transform duration-300 drop-shadow-sm`}
                         />
                         <span className="text-gray-800 text-sm sm:text-base leading-relaxed group-hover:text-gray-900 transition-colors font-medium">
                           {item.text}
@@ -415,7 +415,7 @@ export default function DemoSection() {
                 {/* Bouton action */}
                 <div className="mt-6 pt-4 border-t border-gray-200">
                   <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                    <MessageCircle className="w-4 h-4 mr-2" />
+                    <MessageCircle className="w-4 h-4 aspect-square mr-2 drop-shadow-sm" />
                     Voir détails complets
                   </Button>
                 </div>

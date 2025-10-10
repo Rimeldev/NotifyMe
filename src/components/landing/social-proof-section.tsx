@@ -38,7 +38,7 @@ const testimonials = [
 
 export default function SocialProofSection() {
   return (
-    <section className="section-overflow-fix bg-secondary">
+    <section className="bg-secondary">
       <div className="container">
         <AnimateOnScroll>
           <div className="max-w-md mx-auto">
@@ -50,7 +50,7 @@ export default function SocialProofSection() {
                 Professionnels en Liste d'Attente
               </div>
               <div className="mt-1 text-green-400 font-semibold flex items-center justify-center gap-1">
-                <TrendingUp className="w-4 h-4" />
+                <TrendingUp className="w-4 h-4 aspect-square drop-shadow-sm" />
                 +23 cette semaine
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function SocialProofSection() {
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
                     <div className="bg-card/80 border-white/10 rounded-lg p-6 flex flex-col items-center text-center h-full">
-                      <Avatar className="w-16 h-16 mb-4">
+                      <Avatar className="w-16 h-16 aspect-square mb-4">
                         <AvatarFallback className="text-2xl bg-primary text-primary-foreground">
                           {testimonial.avatar}
                         </AvatarFallback>

@@ -70,7 +70,7 @@ export default function SolutionSection() {
   return (
     <section
       id="solution"
-      className="relative section-overflow-fix py-24 bg-background"
+      className="relative py-24 bg-background"
     >
       <div className="container max-w-7xl mx-auto px-4">
         {/* Header professionnel */}
@@ -78,7 +78,7 @@ export default function SolutionSection() {
           <div className="text-center mb-20">
             {/* Badge d'introduction */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-primary" />
+              <Shield className="w-4 h-4 text-primary drop-shadow-sm" />
               <span className="text-primary font-medium text-sm">
                 SOLUTION COMPLÈTE
               </span>
@@ -90,7 +90,7 @@ export default function SolutionSection() {
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 4 Super-Pouvoirs
               </span>
-              <Rocket className="inline w-10 h-10 ml-3 text-primary animate-bounce" />
+              <Rocket className="inline w-10 h-10 ml-3 text-primary animate-bounce drop-shadow-md" />
             </h2>
 
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -117,16 +117,16 @@ export default function SolutionSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
                 {/* Badge numéro */}
-                <div className="absolute top-2 right-2 w-8 h-8 bg-gradient-to-r from-primary to-cyan rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg z-10">
+                <div className="absolute top-2 right-2 w-8 h-8 aspect-square bg-gradient-to-r from-primary to-cyan rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg z-10">
                   {index + 1}
                 </div>
 
                 {/* Header de la card */}
                 <div className="p-8 pb-4">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.iconGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-16 h-16 aspect-square bg-gradient-to-br ${feature.iconGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <feature.icon className="w-8 h-8 text-white" />
+                    <feature.icon className="w-8 h-8 text-white drop-shadow-sm" />
                   </div>
 
                   <h3 className="text-2xl font-bold text-foreground mb-3 leading-tight">
@@ -143,7 +143,7 @@ export default function SolutionSection() {
                   <ul className="space-y-3 mb-6">
                     {feature.points.map((point, pointIndex) => (
                       <li key={point} className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                        <div className="flex-shrink-0 w-2 h-2 aspect-square bg-primary rounded-full mt-2"></div>
                         <span className="text-muted-foreground leading-relaxed">
                           {point}
                         </span>
