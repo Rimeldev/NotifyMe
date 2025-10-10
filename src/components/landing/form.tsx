@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { CheckCircle, ArrowLeft, Mail, User, Loader2 } from "lucide-react";
+import { CheckCircle, ArrowLeft, Mail, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -16,51 +16,39 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
+import { useEmailSubmission } from "@/hooks/use-email-submission";
 
 const formSchema = z.object({
   email: z.string().email("Email invalide"),
-  firstName: z.string().optional(),
   terms: z
     .boolean()
     .refine((val) => val === true, "Vous devez accepter les conditions"),
 });
 
 export default function EarlyAccessForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const { toast } = useToast();
+  const { isSubmitting, isSubmitted, submitEmail, reset } = useEmailSubmission();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      firstName: "",
       terms: false,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      console.log("Form submitted:", values);
-
-      // Simulation d'un appel API
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      setIsSubmitted(true);
-      toast({
-        title: "Inscription réussie !",
-        description: "Merci ! Nous vous contacterons bientôt.",
-      });
-    } catch (error) {
-      toast({
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
-        variant: "destructive",
-      });
-    }
+    await submitEmail({
+      email: values.email,
+      source: 'Formulaire Landing Page'
+    });
   }
 
   const handleGoBack = () => {
+    window.history.back();
+  };
+
+  const handleGoBackAndReset = () => {
+    reset();
     window.history.back();
   };
 
@@ -93,7 +81,7 @@ export default function EarlyAccessForm() {
           </div>
 
           <Button
-            onClick={handleGoBack}
+            onClick={handleGoBackAndReset}
             className="w-full bg-blue-600 hover:bg-blue-700"
           >
             Retour au site
@@ -119,13 +107,14 @@ export default function EarlyAccessForm() {
 
           <div className="mb-6">
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              Rejoignez la{" "}
+              Rejoignez{" "}
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                liste d'attente
+                500+ professionnels
               </span>
+              {" "}qui ne ratent plus rien
             </h1>
             <p className="text-lg text-slate-300">
-              Soyez averti dès le lancement
+              Accès VIP gratuit + 60% de réduction à vie + Guide "Productivité Digitale"
             </p>
           </div>
         </div>
@@ -159,30 +148,7 @@ export default function EarlyAccessForm() {
                 )}
               />
 
-              {/* Prénom - Champ optionnel */}
-              <FormField
-                control={form.control}
-                name="firstName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-slate-700 font-medium">
-                      Votre prénom{" "}
-                      <span className="text-slate-400">(optionnel)</span>
-                    </FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 aspect-square text-slate-400" />
-                        <Input
-                          placeholder="Pour personnaliser nos échanges"
-                          className="pl-12 h-12 border-slate-200 focus:border-blue-500"
-                          {...field}
-                        />
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+
 
               {/* Conditions */}
               <FormField
@@ -210,12 +176,12 @@ export default function EarlyAccessForm() {
               <Button
                 type="submit"
                 className="w-full h-12 text-lg font-semibold bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
-                disabled={form.formState.isSubmitting}
+                disabled={isSubmitting}
               >
-                {form.formState.isSubmitting ? (
+                {isSubmitting ? (
                   <>
                     <Loader2 className="w-5 h-5 aspect-square mr-2 animate-spin" />
-                    Inscription...
+                    Enregistrement...
                   </>
                 ) : (
                   "Rejoindre la liste d'attente"
