@@ -97,9 +97,9 @@ export default function UseCasesSection() {
                 <CardHeader className="pb-3">
                   {/* Icon container */}
                   <div
-                    className={`inline-flex p-3 rounded-xl ${useCase.bgColor} mb-3 group-hover:scale-105 transition-transform duration-300`}
+                    className={`inline-flex p-3 rounded-xl ${useCase.bgColor} mb-3 group-hover:scale-105 transition-transform duration-300 aspect-square`}
                   >
-                    <useCase.icon className={`w-6 h-6 ${useCase.iconColor}`} />
+                    <useCase.icon className={`w-6 h-6 ${useCase.iconColor} drop-shadow-sm`} />
                   </div>
 
                   {/* Title */}
@@ -121,7 +121,7 @@ export default function UseCasesSection() {
                         key={point}
                         className="flex items-start gap-2 text-slate-700"
                       >
-                        <CheckCircle className="w-3 h-3 text-green-500 mt-1 flex-shrink-0" />
+                        <CheckCircle className="w-3 h-3 aspect-square text-green-500 mt-1 flex-shrink-0 drop-shadow-sm" />
                         <span className="text-xs leading-relaxed">{point}</span>
                       </li>
                     ))}

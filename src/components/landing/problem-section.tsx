@@ -83,7 +83,7 @@ export default function ProblemSection() {
         <AnimateOnScroll>
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-red-100 border border-red-300 rounded-full mb-4 sm:mb-6">
-              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 animate-pulse" />
+              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 animate-pulse drop-shadow-sm" />
               <span className="text-red-600 font-medium text-xs sm:text-sm">
                 ALERTE : Situation critique détectée
               </span>
@@ -96,7 +96,7 @@ export default function ProblemSection() {
                 système de notification
               </span>{" "}
               ?
-              <Brain className="inline w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 ml-2 sm:ml-3 text-red-600 animate-bounce" />
+              <Brain className="inline w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 ml-2 sm:ml-3 text-red-600 animate-bounce drop-shadow-md" />
             </h2>
 
             <p className="max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
@@ -124,12 +124,12 @@ export default function ProblemSection() {
                     className={`relative p-6 sm:p-8 ${problem.bgColor} ${problem.borderColor} border-2 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300`}
                   >
                     {/* Badge de danger */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
-                      <Flame className="w-3 h-3 text-white animate-pulse" />
+                    <div className="absolute -top-2 -right-2 w-6 h-6 aspect-square bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+                      <Flame className="w-3 h-3 text-white animate-pulse drop-shadow-sm" />
                     </div>
 
                     <div
-                      className={`w-12 h-12 sm:w-16 sm:h-16 ${problem.iconBg} rounded-full flex items-center justify-center mb-4 mx-auto shadow-md`}
+                      className={`w-12 h-12 sm:w-16 sm:h-16 aspect-square ${problem.iconBg} rounded-full flex items-center justify-center mb-4 mx-auto shadow-md`}
                     >
                       <problem.icon
                         className={`w-6 h-6 sm:w-8 sm:h-8 ${problem.iconColor}`}
@@ -154,7 +154,7 @@ export default function ProblemSection() {
                         key={point}
                         className="flex items-start gap-3 sm:gap-4 group hover:transform hover:translate-x-1 lg:hover:translate-x-2 transition-all duration-300"
                       >
-                        <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 bg-red-100 border border-red-300 rounded-full flex items-center justify-center mt-1 group-hover:bg-red-200 group-hover:shadow-lg transition-all duration-300">
+                        <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 aspect-square bg-red-100 border border-red-300 rounded-full flex items-center justify-center mt-1 group-hover:bg-red-200 group-hover:shadow-lg transition-all duration-300">
                           <span className="text-red-600 font-bold text-xs sm:text-sm">
                             {pointIndex + 1}
                           </span>

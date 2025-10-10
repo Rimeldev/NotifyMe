@@ -69,7 +69,7 @@ export default function EarlyAccessForm() {
       <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-2xl p-8 text-center shadow-2xl">
           <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8 text-white" />
+            <CheckCircle className="w-8 h-8 aspect-square text-white drop-shadow-sm" />
           </div>
 
           <h1 className="text-2xl font-bold text-slate-900 mb-4">
@@ -83,11 +83,11 @@ export default function EarlyAccessForm() {
 
           <div className="space-y-2 text-sm text-slate-500 mb-8">
             <div className="flex items-center justify-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="w-4 h-4 aspect-square text-green-500 drop-shadow-sm" />
               <span>Accès prioritaire confirmé</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500" />
+              <CheckCircle className="w-4 h-4 aspect-square text-green-500 drop-shadow-sm" />
               <span>Notifications activées</span>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function EarlyAccessForm() {
             onClick={handleGoBack}
             className="text-white/60 hover:text-white mb-6"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-4 h-4 aspect-square mr-2" />
             Retour
           </Button>
 
@@ -145,7 +145,7 @@ export default function EarlyAccessForm() {
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 aspect-square text-slate-400" />
                         <Input
                           placeholder="votre.email@entreprise.com"
                           type="email"
@@ -171,7 +171,7 @@ export default function EarlyAccessForm() {
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 aspect-square text-slate-400" />
                         <Input
                           placeholder="Pour personnaliser nos échanges"
                           className="pl-12 h-12 border-slate-200 focus:border-blue-500"
@@ -214,7 +214,7 @@ export default function EarlyAccessForm() {
               >
                 {form.formState.isSubmitting ? (
                   <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    <Loader2 className="w-5 h-5 aspect-square mr-2 animate-spin" />
                     Inscription...
                   </>
                 ) : (

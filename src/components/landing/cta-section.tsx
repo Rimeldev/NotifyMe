@@ -32,7 +32,7 @@ export default function CtaSection() {
             {/* Badge de statut */}
             <div className="mb-8">
               <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 border border-primary/30 rounded-full text-primary text-sm font-medium shadow-glow-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                <span className="w-2 h-2 aspect-square bg-primary rounded-full animate-pulse"></span>
                 Bientôt disponible - Liste d'attente ouverte
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function CtaSection() {
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
                     <div className="flex items-center justify-center gap-3 mb-2">
                       <div className="p-2 bg-primary/20 rounded-lg">
-                        <stat.icon className="w-5 h-5 text-primary" />
+                        <stat.icon className="w-5 h-5 aspect-square text-primary drop-shadow-sm" />
                       </div>
                       <div className="text-3xl font-bold text-white">
                         {stat.value}
@@ -81,7 +81,7 @@ export default function CtaSection() {
                   className="h-16 px-12 text-xl font-bold bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 transform hover:scale-105"
                 >
                   Rejoindre la liste d'attente
-                  <ArrowRight className="ml-3 w-6 h-6" />
+                  <ArrowRight className="ml-3 w-6 h-6 drop-shadow-sm" />
                 </Button>
 
                 <p className="content-container text-slate-400">
@@ -94,19 +94,19 @@ export default function CtaSection() {
             <AnimateOnScroll delay={500}>
               <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm">
                 <div className="flex items-center gap-2 text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 aspect-square text-success drop-shadow-sm" />
                   <span>Accès prioritaire</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 aspect-square text-success drop-shadow-sm" />
                   <span>Notifications exclusives</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 aspect-square text-success drop-shadow-sm" />
                   <span>Support premium</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-success" />
+                  <CheckCircle className="w-4 h-4 aspect-square text-success drop-shadow-sm" />
                   <span>Désabonnement simple</span>
                 </div>
               </div>
