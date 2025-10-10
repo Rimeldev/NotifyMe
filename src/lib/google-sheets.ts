@@ -35,21 +35,32 @@ class GoogleSheetsService {
 
   private initializeAuth() {
     try {
+      // Priorité : variable d'environnement JSON (pour Vercel)
+      const credentialsJson = process.env.GOOGLE_CREDENTIALS_JSON;
       const credentialsPath = process.env.GOOGLE_CREDENTIALS_PATH;
-      if (!credentialsPath) {
-        throw new Error('GOOGLE_CREDENTIALS_PATH not found in environment variables');
-      }
-
-      const fullPath = path.resolve(process.cwd(), credentialsPath);
       
-      if (!fs.existsSync(fullPath)) {
-        throw new Error(`Credentials file not found: ${fullPath}`);
-      }
+      if (credentialsJson) {
+        // Utilisation des credentials depuis la variable d'environnement (Vercel)
+        const credentials = JSON.parse(credentialsJson);
+        this.auth = new google.auth.GoogleAuth({
+          credentials,
+          scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+      } else if (credentialsPath) {
+        // Utilisation du fichier local (développement)
+        const fullPath = path.resolve(process.cwd(), credentialsPath);
+        
+        if (!fs.existsSync(fullPath)) {
+          throw new Error(`Credentials file not found: ${fullPath}`);
+        }
 
-      this.auth = new google.auth.GoogleAuth({
-        keyFile: fullPath,
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      });
+        this.auth = new google.auth.GoogleAuth({
+          keyFile: fullPath,
+          scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+      } else {
+        throw new Error('Neither GOOGLE_CREDENTIALS_JSON nor GOOGLE_CREDENTIALS_PATH found');
+      }
 
       this.sheets = google.sheets({ version: 'v4', auth: this.auth });
     } catch (error) {
