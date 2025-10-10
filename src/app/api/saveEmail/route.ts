@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     const sheetsService = GoogleSheetsService.getInstance();
     
     // En mode dev, on peut continuer sans les variables d'environnement
-    if (!sheetsService.isDevMode() && (!process.env.GOOGLE_CREDENTIALS_PATH || !process.env.GOOGLE_SPREADSHEET_ID)) {
+    if (!sheetsService.isDevMode() && (!process.env.GOOGLE_CREDENTIALS_JSON || !process.env.GOOGLE_SPREADSHEET_ID)) {
       console.error('Missing required environment variables for production mode');
       return NextResponse.json(
         { 
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
     
     // Gestion spécifique des erreurs
     if (error instanceof Error) {
-      if (error.message.includes('GOOGLE_CREDENTIALS_PATH')) {
+      if (error.message.includes('GOOGLE_CREDENTIALS_JSON')) {
         return NextResponse.json(
           { 
             success: false, 
