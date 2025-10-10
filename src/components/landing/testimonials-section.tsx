@@ -121,14 +121,14 @@ export function TestimonialsSection() {
       </div>
       <div className="mx-auto max-w-5xl space-y-8">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold tracking-wide text-balance md:text-4xl lg:text-5xl xl:text-6xl xl:font-extrabold text-white">
+          <h2 className="text-3xl font-bold tracking-wide text-balance md:text-4xl lg:text-5xl xl:text-6xl xl:font-extrabold text-white">
             Ils ont repris le contrôle
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
               de leur communication
             </span>
-          </h1>
-          <p className="text-muted-foreground text-sm md:text-base lg:text-lg text-gray-300">
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-base lg:text-lg">
             Découvrez comment NotifyMe transforme la vie professionnelle et personnelle de nos utilisateurs.
           </p>
         </div>
@@ -167,12 +167,12 @@ export function TestimonialsSection() {
               <div>
                 <div className="-mt-0.5 -space-y-0.5">
                   <p className="text-sm md:text-base text-white font-medium">{name}</p>
-                  <span className="text-muted-foreground block text-[11px] font-light tracking-tight text-gray-400">
+                  <span className="text-muted-foreground block text-[11px] font-light tracking-tight ">
                     {role} chez {company}
                   </span>
                 </div>
                 <blockquote className="mt-3">
-                  <p className="text-foreground text-sm font-light tracking-wide text-gray-200">
+                  <p className="text-foreground text-sm font-light tracking-wide ">
                     "{quote}"
                   </p>
                 </blockquote>

@@ -35,7 +35,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-16 items-start py-6 sm:py-10 lg:py-16">
           {/* Contenu gauche */}
-          <div className="order-2 lg:order-1 space-y-3 sm:space-y-6">
+          <div className="order-1 lg:order-1 space-y-3 sm:space-y-6">
             {/* Badge statut */}
             <AnimateOnScroll delay={100}>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-400 text-xs sm:text-sm font-medium">
@@ -47,16 +47,16 @@ export default function HeroSection() {
             {/* Titre principal - Plus direct et percutant */}
             <AnimateOnScroll delay={200}>
               <h1 className="content-container font-bold text-white text-2xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight">
-                <br className="sm:hidden" />
-                <span className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl block mt-1 sm:mt-2">
-                  Communication intelligente multi-plateformes
-                </span>
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  Communication intelligente
+                </span>{" "}
+                multi-plateformes
               </h1>
             </AnimateOnScroll>
 
             {/* Description plus courte et claire */}
             <AnimateOnScroll delay={300}>
-              <p className="content-container text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed max-w-xl">
+              <p className="content-container text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed max-w-xl">
                 Surveillance 360°, résumés intelligents et alertes SMS personnalisées. NotifyMe unifie toutes vos conversations et vous livre seulement l'essentiel, selon votre contexte.
               </p>
             </AnimateOnScroll>
@@ -110,11 +110,10 @@ export default function HeroSection() {
           </div>
 
           {/* Mockup Dashboard */}
-          <AnimateOnScroll delay={300} className="order-1 lg:order-last mb-6 lg:mb-0">
+          <AnimateOnScroll delay={300} className="order-2 lg:order-last mb-6 lg:mb-0">
             <div className="relative absolute-container p-4 sm:p-6">
               {/* Éléments flottants animés */}
-              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 aspect-square bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-bounce"></div>
-              <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-4 h-4 sm:w-6 sm:h-6 aspect-square bg-gradient-to-r from-green-400 to-cyan-400 rounded-full opacity-30 animate-pulse"></div>
+             
 
               {/* Smartphone mockup */}
               <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[360px] z-10">
@@ -223,11 +222,6 @@ export default function HeroSection() {
                             </button>
                           </div>
                         </div>
-
-                        {/* Particules flottantes */}
-                        <div className="absolute top-20 left-6 w-2 h-2 aspect-square bg-blue-400 rounded-full animate-ping opacity-60"></div>
-                        <div className="absolute top-32 right-8 w-1.5 h-1.5 aspect-square bg-green-400 rounded-full animate-pulse opacity-40"></div>
-                        <div className="absolute top-40 left-8 w-2 h-2 aspect-square bg-purple-400 rounded-full animate-bounce opacity-50"></div>
                       </div>
                     </div>
                   </div>

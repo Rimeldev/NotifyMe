@@ -63,7 +63,7 @@ export default function UseCasesSection() {
         {/* Header */}
         <AnimateOnScroll>
           <div className="text-center mb-10">
-            <h2 className="font-bold text-white text-3xl lg:text-4xl leading-tight mb-3">
+            <h2 className="font-bold text-white text-3xl md:text-4xl lg:text-5xl leading-tight mb-3">
               Pour chaque contexte de{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 votre vie

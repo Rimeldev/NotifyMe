@@ -119,9 +119,9 @@ export default function DemoSection() {
           content:
             "URGENT - Léa a fait une chute dans la cour. Merci de venir la récupérer immédiatement.",
           type: "urgent",
-          platform: "SMS",
+          platform: "WhatsApp",
           time: "11:15",
-          sms: "🚨 École URGENT - Léa chute, à récupérer maintenant",
+          sms: "🚨 École URGENT - Accident : Léa a chuté - Venir immédiatement",
           icon: AlertTriangle,
           bgColor: "from-red-500 to-rose-500",
           textColor: "text-red-50",
@@ -154,7 +154,7 @@ export default function DemoSection() {
       summary: [
         {
           icon: AlertTriangle,
-          text: "🚨 École: Léa chute - RÉCUPÉRER MAINTENANT",
+          text: "🚨 École: Accident : Léa a chuté - Venir immédiatement",
           type: "urgent",
           color: "text-red-600",
           bgColor: "bg-red-50",
@@ -190,7 +190,7 @@ export default function DemoSection() {
 
   const currentScenario = scenarios[activeTab as keyof typeof scenarios];
 
-  const getPlatformIcon = (platform) => {
+  const getPlatformIcon = (platform: string) => {
     switch (platform) {
       case "WhatsApp":
         return "💬";
