@@ -70,7 +70,7 @@ export default function SolutionSection() {
   return (
     <section
       id="solution"
-      className="relative section-overflow-fix py-24 bg-background"
+      className="relative py-24 bg-background"
     >
       <div className="container max-w-7xl mx-auto px-4">
         {/* Header professionnel */}

@@ -24,7 +24,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative section-overflow-fix pt-12 pb-6 sm:pt-16 sm:pb-10"
+      className="relative pt-12 pb-6 sm:pt-16 sm:pb-10"
     >
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-background">

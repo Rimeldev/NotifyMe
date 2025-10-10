@@ -38,7 +38,7 @@ const testimonials = [
 
 export default function SocialProofSection() {
   return (
-    <section className="section-overflow-fix bg-secondary">
+    <section className="bg-secondary">
       <div className="container">
         <AnimateOnScroll>
           <div className="max-w-md mx-auto">

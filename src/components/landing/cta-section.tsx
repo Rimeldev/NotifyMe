@@ -20,13 +20,13 @@ export default function CtaSection() {
   return (
     <section
       id="cta"
-      className="relative py-20 bg-slate-900 section-overflow-fix no-internal-scroll"
+      className="relative py-20 bg-slate-900"
     >
       {/* Background Effects - contenus dans la section */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-cyan/10 pointer-events-none"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(59,130,246,0.15),transparent)] pointer-events-none"></div>
 
-      <div className="container relative z-10 mx-auto px-4 no-internal-scroll">
+      <div className="container relative z-10 mx-auto px-4">
         <AnimateOnScroll>
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge de statut */}

@@ -76,7 +76,7 @@ export default function ProblemSection() {
   return (
     <section
       id="problem"
-      className="section-overflow-fix py-8 sm:py-12 lg:py-16 bg-gray-100"
+      className="py-8 sm:py-12 lg:py-16 bg-gray-100"
     >
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header responsive */}
